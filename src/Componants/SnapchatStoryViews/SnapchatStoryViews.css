@@ -1,0 +1,508 @@
+/* SnapchatStoryViews Styles */
+.snapchat-story-views {
+  background: #14141F !important;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Product Section */
+.snapchat-story-views__product-section {
+  width: 80%;
+  max-width: 1000px;
+  background-color: #343444 !important;
+  border-radius: 15px;
+  padding: 1.5rem !important;
+  border: none;
+  backdrop-filter: blur(10px);
+  font-family: 'Arial', sans-serif !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  line-height: 26px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  text-align: right !important;
+  margin: 0 auto 3rem auto !important;
+  letter-spacing: normal;
+  word-spacing: 0px;
+  text-indent: 0px;
+  text-transform: none;
+  text-decoration: none;
+  font-variant: normal;
+  font-stretch: 100%;
+  vertical-align: baseline;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.snapchat-story-views__title-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.snapchat-story-views__product-title {
+  flex: 2;
+  color: #ffffff !important;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.snapchat-story-views__main-image {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(247, 236, 6, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.snapchat-story-views__main-image:hover {
+  transform: scale(1.05);
+}
+
+.snapchat-story-views__social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.snapchat-story-views__heart-btn,
+.snapchat-story-views__share-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.snapchat-story-views__heart-btn:hover,
+.snapchat-story-views__share-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+
+.snapchat-story-views__price-section {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.snapchat-story-views__price-large {
+  color: #ffffff !important;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.snapchat-story-views__price-currency {
+  color: #ffffff !important;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.snapchat-story-views__sales-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: auto;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.snapchat-story-views__flame-icon {
+  font-size: 1.2rem;
+}
+
+.snapchat-story-views__sales-text {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.snapchat-story-views__description {
+  margin-bottom: 2rem;
+}
+
+.snapchat-story-views__description-text {
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: right;
+}
+
+.snapchat-story-views__username-instruction {
+  color: #ffffff !important;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  text-align: right;
+  font-style: normal;
+}
+
+
+.snapchat-story-views__service-details {
+  color: #ffffff !important;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: right;
+  line-height: 1.5;
+}
+
+.snapchat-story-views__read-more {
+  background: none;
+  border: none;
+  color: #F7EC06 !important;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.snapchat-story-views__read-more:hover {
+  color: #F7EC06;
+}
+
+.snapchat-story-views__add-to-cart-btn {
+  width: 100%;
+  background: #F7EC06 !important;
+  color: #000000 !important;
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(247, 236, 6, 0.3);
+}
+
+.snapchat-story-views__add-to-cart-btn:hover {
+  background: #ffffff;
+  color: #1F1F2C;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .snapchat-story-views {
+    padding: 1.5rem 1rem;
+  }
+
+  .snapchat-story-views__product-section {
+    width: 85%;
+  }
+}
+
+@media (max-width: 992px) {
+  .snapchat-story-views__product-section {
+    width: 90%;
+  }
+  
+  .snapchat-story-views__title-section {
+    gap: 2.5rem;
+  }
+  
+  .snapchat-story-views__product-title {
+    font-size: 2rem;
+  }
+  
+  .snapchat-story-views__price-large {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .snapchat-story-views {
+    padding: 1rem;
+  }
+
+  .snapchat-story-views__product-section {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .snapchat-story-views__title-section {
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .snapchat-story-views__product-title {
+    font-size: 1.8rem;
+  }
+  
+  .snapchat-story-views__price-large {
+    font-size: 2rem;
+  }
+  
+  .snapchat-story-views__price-currency {
+    font-size: 1.2rem;
+  }
+  
+  .snapchat-story-views__sales-indicator {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+  }
+  
+  .snapchat-story-views__username-instruction {
+    font-size: 0.9rem;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .snapchat-story-views {
+    padding: 0.5rem;
+  }
+
+  .snapchat-story-views__product-section {
+    width: 98%;
+    padding: 1rem;
+  }
+  
+  .snapchat-story-views__title-section {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .snapchat-story-views__product-title {
+    font-size: 1.5rem;
+  }
+  
+  .snapchat-story-views__price-large {
+    font-size: 1.8rem;
+  }
+  
+  .snapchat-story-views__sales-indicator {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .snapchat-story-views__username-instruction {
+    font-size: 0.85rem;
+  }
+
+}
+
+/* Additional Products Grid */
+.snapchat-story-views__products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 2rem;
+}
+
+/* Product Card */
+.snapchat-story-views__product-card {
+  background: #F7EC06;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  border: none;
+  position: relative;
+}
+
+.snapchat-story-views__product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(247, 236, 6, 0.2);
+}
+
+.snapchat-story-views__card-header {
+  background: #1F1F2C;
+  padding: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+}
+
+.snapchat-story-views__card-logo {
+  display: none;
+}
+
+.snapchat-story-views__card-logo-letter {
+  display: none;
+}
+
+.snapchat-story-views__card-category-icon {
+  display: none;
+}
+
+.snapchat-story-views__card-line {
+  display: none;
+}
+
+.snapchat-story-views__card-subtitle {
+  display: none;
+}
+
+.snapchat-story-views__card-star {
+  display: none;
+}
+
+.snapchat-story-views__card-badge {
+  display: none;
+}
+
+.snapchat-story-views__card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.snapchat-story-views__card-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  border: 4px solid #ffffff;
+}
+
+.snapchat-story-views__card-main-image:hover {
+  transform: scale(1.1);
+}
+
+.snapchat-story-views__card-content {
+  padding: 1.5rem;
+  background: #1F1F2C !important;
+}
+
+.snapchat-story-views__card-title {
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 0.8rem 0;
+  text-align: right;
+}
+
+.snapchat-story-views__card-price {
+  color: #ffffff !important;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0 0 1.5rem 0;
+  text-align: right;
+}
+
+.snapchat-story-views__card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.snapchat-story-views__card-favorite-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  color: #ffffff;
+}
+
+.snapchat-story-views__card-favorite-btn:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.snapchat-story-views__card-add-to-cart {
+  background: #2a2a3a !important;
+  color: #F7EC06 !important;
+  border: 2px solid #F7EC06 !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  justify-content: center;
+  box-shadow: none !important;
+  font-size: 0.9rem;
+}
+
+.snapchat-story-views__card-add-to-cart:hover {
+  background: #ffffff !important;
+  color: #2a2a2a !important;
+  transform: translateY(-2px);
+  border-color: #ffffff !important;
+}
+
+/* Responsive for Additional Products */
+@media (max-width: 768px) {
+  .snapchat-story-views__products-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.3rem;
+    padding: 0 1rem;
+  }
+  
+  .snapchat-story-views__card-header {
+    min-height: 140px;
+  }
+  
+  .snapchat-story-views__card-content {
+    padding: 1.5rem;
+  }
+
+  .snapchat-story-views__card-title {
+    font-size: 1.05rem;
+  }
+
+  .snapchat-story-views__card-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .snapchat-story-views__card-price {
+    font-size: 1.2rem;
+  }
+  
+  .snapchat-story-views__card-actions {
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: stretch;
+  }
+}
+
+
+
