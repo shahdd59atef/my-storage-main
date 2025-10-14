@@ -218,8 +218,8 @@
   .products-slider__arrow {
     background: transparent;
     color: #ffffff;
-    border: 2px solid #ffffff;
-    border-radius: 50%;
+    border: none; /* remove circle border on responsive */
+    border-radius: 0; /* remove circle shape */
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
@@ -296,6 +296,11 @@
     gap: 1.25rem; 
   }
 
+  /* Match usernames header height on tablets */
+  .products-slider__header {
+    min-height: 250px;
+  }
+
   .products-slider__image {
     padding: 1.8rem;
     min-height: 180px;
@@ -348,7 +353,7 @@
   }
 
   .products-slider__header {
-    min-height: 160px;
+    min-height: 220px;
     position: relative;
     overflow: hidden;
   }
@@ -564,7 +569,7 @@
   }
 
   .products-slider__header {
-    min-height: 140px;
+    min-height: 200px;
     position: relative;
     overflow: hidden;
   }
@@ -778,7 +783,7 @@
   }
 
   .products-slider__header {
-    min-height: 120px;
+    min-height: 180px;
     position: relative;
     overflow: hidden;
   }

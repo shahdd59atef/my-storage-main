@@ -8,6 +8,7 @@ import './BottomNavbar.css';
 
 const BottomNavbar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [showAccountBar, setShowAccountBar] = useState(false); // mobile login bar
 
   // Open menu function for categories
   const handleCategoriesClick = (e) => {
@@ -22,10 +23,15 @@ const BottomNavbar = () => {
   // Open login modal function
   const handleAccountClick = (e) => {
     e.preventDefault();
-    // Trigger the account icon click from navbar using ID
+    // Prefer triggering existing web behavior if available
     const accountIcon = document.getElementById('navbar-account-icon');
     if (accountIcon && typeof accountIcon.click === 'function') {
       accountIcon.click();
+      return;
+    }
+    // Fallback for responsive/mobile: open a small login bottom sheet
+    if (window.innerWidth <= 1024) {
+      setShowAccountBar(true);
     }
   };
 
@@ -82,7 +88,7 @@ const BottomNavbar = () => {
 
       {/* Search Modal */}
       {showSearchBar && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-start justify-center pt-20 md:pt-32">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center">
           <div className="relative w-full max-w-2xl mx-4">
             <div className="relative">
               <input
@@ -100,6 +106,25 @@ const BottomNavbar = () => {
                 ✕
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Account Bottom Sheet - mobile only, non-intrusive to web */}
+      {showAccountBar && (
+        <div className="fixed inset-0 z-[9999] flex items-end justify-center md:hidden">
+          <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setShowAccountBar(false)} />
+          <div className="relative w-full bg-white rounded-t-2xl shadow-2xl p-4 pt-5 max-h-[70vh] overflow-y-auto">
+            <button onClick={() => setShowAccountBar(false)} className="absolute top-3 left-4 text-gray-400 text-xl">✕</button>
+            <h3 className="text-center text-lg font-bold mb-4">تسجيل الدخول</h3>
+            <form className="space-y-3" dir="rtl">
+              <input type="email" placeholder="البريد الإلكتروني" className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#F7EC06]" />
+              <input type="password" placeholder="كلمة المرور" className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#F7EC06]" />
+              <button type="submit" className="w-full bg-[#F7EC06] text-gray-900 font-semibold rounded-lg py-2">دخول</button>
+              <div className="text-center text-sm text-gray-600">
+                ليس لديك حساب؟ <a href="/signup" className="text-[#F7EC06]">إنشاء حساب</a>
+              </div>
+            </form>
           </div>
         </div>
       )}

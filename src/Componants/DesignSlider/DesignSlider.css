@@ -109,6 +109,8 @@
   grid-auto-columns: calc((100% - 3 * 1.5rem) / 4); 
   gap: 1.5rem; 
   transition: transform .45s cubic-bezier(.4,0,.2,1); 
+  /* removed equal heights to restore original */
+  padding: 0 2rem;
 }
 
 .design-slider__card {
@@ -408,8 +410,13 @@
   }
 
   .design-slider__track { 
-    grid-auto-columns: calc((100% - 1 * 1rem) / 2); 
+    grid-auto-columns: 85%; 
     gap: 1rem; 
+  }
+
+  .design-slider__card {
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .design-slider__card {
@@ -497,7 +504,7 @@
   }
 
   .design-slider__track { 
-    grid-auto-columns: 100%; 
+    grid-auto-columns: 90%; 
     gap: 1rem; 
   }
 
@@ -585,7 +592,7 @@
   }
 
   .design-slider__track { 
-    grid-auto-columns: 100%; 
+    grid-auto-columns: 95%; 
   }
 
   .design-slider__card {
