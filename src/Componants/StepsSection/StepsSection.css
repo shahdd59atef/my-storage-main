@@ -66,35 +66,23 @@
   justify-content: center;
   background: linear-gradient(135deg, #F7EC06 0%, #F7EC06 100%);
   border-radius: 50%;
-  animation: pulse 2s ease-in-out infinite;
+  animation: none; /* ثابت بدون أنيميشن */
 }
 
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(247, 236, 6, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 20px rgba(247, 236, 6, 0);
-  }
+/* أنيميشن تكبير متدرج عند المرور بالماوس */
+@keyframes grow {
+  from { transform: scale(1); }
+  to   { transform: scale(1.12); }
 }
 
 .step-card__emoji {
   font-size: 2.5rem;
   position: relative;
   z-index: 2;
-  animation: bounce 2s ease-in-out infinite;
+  animation: none; /* ثابت */
 }
 
-@keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
+/* تم إلغاء أنيميشن القفز */
 
 .step-card__number {
   position: absolute;
@@ -112,7 +100,7 @@
   font-weight: 900;
   color: #F7EC06;
   z-index: 3;
-  animation: rotate 4s linear infinite;
+  animation: none; /* ثابت */
 }
 
 @keyframes rotate {
@@ -159,47 +147,36 @@
 .particle-1 {
   top: 20%;
   left: 10%;
-  animation: float 3s ease-in-out infinite;
+  animation: none;
 }
 
 .particle-2 {
   top: 60%;
   right: 15%;
-  animation: float 4s ease-in-out infinite 1s;
+  animation: none;
 }
 
 .particle-3 {
   bottom: 20%;
   left: 20%;
-  animation: float 5s ease-in-out infinite 2s;
+  animation: none;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translateY(-20px) translateX(10px);
-    opacity: 0.6;
-  }
-}
+/* تم إلغاء أنيميشن الطفو */
 
 /* Arrow Between Cards */
 .step-arrow {
   flex-shrink: 0;
   color: #F7EC06;
   font-size: 2rem;
-  animation: slide 1.5s ease-in-out infinite;
+  animation: none;
 }
 
-@keyframes slide {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(-10px);
-  }
+/* تم إلغاء أنيميشن السهم */
+
+/* تفعيل التكبير المستمر أثناء hover فقط */
+.step-card:hover .step-card__icon {
+  animation: grow 1.8s linear infinite alternate;
 }
 
 .arrow-icon {

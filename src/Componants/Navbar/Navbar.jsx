@@ -54,7 +54,8 @@ const Navbar = memo(() => {
   const buttonClass = "bg-none border-none text-gray-500 text-[13px] font-semibold cursor-pointer py-[0.5rem] px-0 transition-colors duration-300 whitespace-nowrap hover:text-[#F7EC06]";
 
   return (
-    <nav className="bg-[#141420] py-1.5 relative z-[1000] h-30 shadow-[(247,236,6,0.15)] rounded-xl my-3 mx-auto w-[85%] -mb-20">
+    <>
+    <nav className="bg-[#141420] py-1.5 fixed top-0 left-0 right-0 z-[1000] h-30 shadow-[(247,236,6,0.15)] w-full md:w-[85%] md:mx-auto rounded-none md:rounded-xl my-0 md:my-3 px-4 md:px-0">
       <div className="max-w-[1000px] mx-auto px-4 flex flex-col gap-1">
         {/* Mobile/Tablet Layout */}
         <div className="flex items-center justify-between w-full md:hidden py-3 px-4">
@@ -729,6 +730,9 @@ const Navbar = memo(() => {
         </ul>
       </div>
     </nav>
+    {/* Spacer to prevent content from being hidden behind fixed navbar */}
+    <div className="h-[64px] md:h-[96px]"></div>
+    </>
   );
 });
 
