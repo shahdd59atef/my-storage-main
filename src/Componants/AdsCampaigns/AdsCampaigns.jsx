@@ -23,7 +23,11 @@ const AdsCampaigns = memo(() => {
     {
       id: 1,
       title: 'إدارة حملات سناب شات',
-      price: '100',
+      price: 80,
+      originalPrice: 100,
+      discountPercentage: 20,
+      savings: 20,
+      hasDiscount: true,
       category: 'سناب شات',
       icon: '👻',
       badge: '1★'
@@ -31,7 +35,11 @@ const AdsCampaigns = memo(() => {
     {
       id: 2,
       title: 'إدارة حملات انستقرام',
-      price: '100',
+      price: 100,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       category: 'انستقرام',
       icon: '📷',
       badge: '1★'
@@ -39,7 +47,11 @@ const AdsCampaigns = memo(() => {
     {
       id: 3,
       title: 'إدارة حملات تيك توك',
-      price: '100',
+      price: 75,
+      originalPrice: 100,
+      discountPercentage: 25,
+      savings: 25,
+      hasDiscount: true,
       category: 'تيك توك',
       icon: '🎵',
       badge: '1★'
@@ -47,7 +59,11 @@ const AdsCampaigns = memo(() => {
     {
       id: 4,
       title: 'إدارة حملات جوجل',
-      price: '100',
+      price: 100,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       category: 'جوجل',
       icon: '🔍',
       badge: '1★'
@@ -174,9 +190,32 @@ const AdsCampaigns = memo(() => {
                 </div>
                 <div className="ads-campaigns__product-content">
                   <h4 className="ads-campaigns__product-title">{product.title}</h4>
-                  <p className="ads-campaigns__product-price" dir="rtl">
-                    {product.price} <SaudiRiyalIcon width={12} height={13} />
-                  </p>
+                  {product.hasDiscount ? (
+                    <div className="ads-campaigns__pricing" dir="rtl">
+                      <div className="ads-campaigns__discount-container">
+                        <div className="ads-campaigns__price-info">
+                          <p className="ads-campaigns__product-price ads-campaigns__product-price--discounted">
+                            {product.price} <SaudiRiyalIcon width={12} height={13} />
+                          </p>
+                          <p className="ads-campaigns__original-price">
+                            {product.originalPrice} <SaudiRiyalIcon width={10} height={11} />
+                          </p>
+                        </div>
+                        <div className="ads-campaigns__discount-info">
+                          <div className="ads-campaigns__discount-badge">
+                            - % {product.discountPercentage}
+                          </div>
+                          <div className="ads-campaigns__savings">
+                            وفر {product.savings.toFixed(2)} <SaudiRiyalIcon width={10} height={11} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="ads-campaigns__product-price" dir="rtl">
+                      {product.price} <SaudiRiyalIcon width={12} height={13} />
+                    </p>
+                  )}
                   <div className="ads-campaigns__product-actions">
                     <button className="ads-campaigns__favorite-btn" onClick={handleFavoriteClick}>
                       <IoIosHeartEmpty />

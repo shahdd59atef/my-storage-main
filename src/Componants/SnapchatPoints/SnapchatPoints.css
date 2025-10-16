@@ -236,6 +236,7 @@
 
 .snapchat-points__product-content {
   padding: 2rem 1.5rem;
+  direction: rtl; /* Change text direction to right-to-left */
 }
 
 .snapchat-points__product-title {
@@ -243,6 +244,7 @@
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0 0 0.8rem 0;
+  order: 1;
 }
 
 .snapchat-points__product-price {
@@ -250,6 +252,7 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin: 0 0 1.5rem 0;
+  order: 1;
 }
 
 .snapchat-points__product-actions {
@@ -267,19 +270,22 @@
   padding: 0.4rem;
   border-radius: 50%;
   transition: all 0.3s ease;
+  color: #ffffff;
+  order: 2; /* place after add-to-cart */
 }
 
 .snapchat-points__favorite-btn:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: scale(1.1);
+  color: #F7EC06;
 }
 
 .snapchat-points__add-to-cart {
   background: transparent;
-  color: #ffffff;
+  color: #F7EC06;
   border: 2px solid #F7EC06;
   padding: 0.6rem 1.2rem;
-  border-radius: 20px;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -288,13 +294,13 @@
   gap: 0.4rem;
   flex: 1;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(247, 236, 6, 0.3);
   font-size: 0.9rem;
+  order: 1; /* place before heart */
 }
 
 .snapchat-points__add-to-cart:hover {
   background: #F7EC06;
-  color: #1F1F2C;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 

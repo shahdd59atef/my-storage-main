@@ -152,7 +152,7 @@ const SnapchatCapture = memo(() => {
                       <PiShoppingBag />
                       إضافة للسلة
                     </button>
-                    <button className="snapchat-capture__contact-btn">راسلنا</button>
+                    {/* Removed contact button per request */}
                   </div>
                 </div>
               </div>

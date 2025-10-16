@@ -235,6 +235,7 @@
 
 .snapchat-capture__product-content {
   padding: 2rem 1.5rem;
+  direction: rtl; /* Change text direction to right-to-left */
 }
 
 .snapchat-capture__product-title {

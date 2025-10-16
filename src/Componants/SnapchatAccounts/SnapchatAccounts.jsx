@@ -23,33 +23,41 @@ const SnapchatAccounts = memo(() => {
     {
       id: 1,
       title: 'حساب سناب شات 500 الف نقطة',
-      price: '500',
-      oldPrice: null,
-      discount: null,
+      price: 500,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       rating: '5★'
     },
     {
       id: 2,
       title: 'حساب سناب شات 200 الف نقطة',
-      price: '200',
-      oldPrice: null,
-      discount: null,
+      price: 200,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       rating: null
     },
     {
       id: 3,
       title: 'حساب سناب شات 100 الف نقطة',
-      price: '140',
-      oldPrice: '200',
-      discount: '30%',
+      price: 140,
+      originalPrice: 200,
+      discountPercentage: 30,
+      savings: 60,
+      hasDiscount: true,
       rating: '5★'
     },
     {
       id: 4,
       title: 'حساب سناب شات 50 الف نقطة',
-      price: '90',
-      oldPrice: '100',
-      discount: '10%',
+      price: 90,
+      originalPrice: 100,
+      discountPercentage: 10,
+      savings: 10,
+      hasDiscount: true,
       rating: null
     }
   ];
@@ -169,12 +177,28 @@ const SnapchatAccounts = memo(() => {
                 <div className="snapchat-accounts__product-content">
                   <h4 className="snapchat-accounts__product-title">{product.title}</h4>
                   <div className="snapchat-accounts__price-container" dir="rtl">
-                    <p className="snapchat-accounts__product-price">
-                      {product.price} <SaudiRiyalIcon width={12} height={13} />
-                    </p>
-                    {product.oldPrice && (
-                      <p className="snapchat-accounts__product-old-price">
-                        {product.oldPrice} <SaudiRiyalIcon width={10} height={11} />
+                    {product.hasDiscount ? (
+                      <div className="snapchat-accounts__discount-container">
+                        <div className="snapchat-accounts__price-info">
+                          <p className="snapchat-accounts__product-price snapchat-accounts__product-price--discounted">
+                            {product.price} <SaudiRiyalIcon width={12} height={13} />
+                          </p>
+                          <p className="snapchat-accounts__product-old-price">
+                            {product.originalPrice} <SaudiRiyalIcon width={10} height={11} />
+                          </p>
+                        </div>
+                        <div className="snapchat-accounts__discount-info">
+                          <div className="snapchat-accounts__discount-badge">
+                            - % {product.discountPercentage}
+                          </div>
+                          <div className="snapchat-accounts__savings">
+                            وفر {product.savings.toFixed(2)} <SaudiRiyalIcon width={10} height={11} />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="snapchat-accounts__product-price">
+                        {product.price} <SaudiRiyalIcon width={12} height={13} />
                       </p>
                     )}
                   </div>

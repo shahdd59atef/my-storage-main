@@ -38,49 +38,52 @@ import WhyChooseUs2 from './Componants/WhyChooseUs2/WhyChooseUs2';
 import AllReviews from './Componants/AllReviews/AllReviews';
 import Cart from './Componants/Cart/Cart';
 import BottomNavbar from './Componants/BottomNavbar/BottomNavbar';
+import { CartProvider } from './contexts/CartContext';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <CustomCursor />
-      <Navbar />
-      <main className="App-main">
-        <Routes>
-          <Route path="/" element={<Navigate to="/home" replace />} />
-          <Route path="/home" element={<PageHome />} />
-          <Route path="/service" element={<FeaturedService />} />
-          <Route path="/blog" element={<PageBlog />} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/snapchat-capture" element={<SnapchatCapture />} />
-          <Route path="/snapchat-points" element={<SnapchatPoints />} />
-          <Route path="/snapchat-story-views" element={<SnapchatStoryViews />} />
-          <Route path="/snapchat-followers" element={<SnapchatFollowers />} />
-          <Route path="/snapchat-accounts" element={<SnapchatAccounts />} />
-          <Route path="/snapchat-ads" element={<SnapchatAds />} />
-          <Route path="/username-3char" element={<Username3Char />} />
-          <Route path="/username-4char" element={<Username4Char />} />
-          <Route path="/social-media-services" element={<SocialMediaServices />} />
-          <Route path="/accounts-for-sale" element={<AccountsForSale />} />
-          <Route path="/ads-campaigns-services" element={<AdsCampaigns />} />
-          <Route path="/verification-services" element={<Verification />} />
-          <Route path="/usernames-services" element={<Usernames />} />
-          <Route path="/social" element={<PageSocial />} />
-          <Route path="/accounts-sale" element={<PageAccountsSale />} />
-          <Route path="/ads-campaigns" element={<PageAdsCampaigns />} />
-          <Route path="/verification" element={<PageVerification />} />
-          <Route path="/accounts-management" element={<PageAccountsManagement />} />
-          <Route path="/graphic-design" element={<PageGraphicDesign />} />
-          <Route path="/web-apps" element={<PageWebApps />} />
-          <Route path="/all-reviews" element={<AllReviews />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <WhatsAppButton />
-      <Footer />
-      <BottomNavbar />
-    </div>
+    <CartProvider>
+      <div className="App">
+        <CustomCursor />
+        <Navbar />
+        <main className="App-main">
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" replace />} />
+            <Route path="/home" element={<PageHome />} />
+            <Route path="/service" element={<FeaturedService />} />
+            <Route path="/blog" element={<PageBlog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
+            <Route path="/snapchat-capture" element={<SnapchatCapture />} />
+            <Route path="/snapchat-points" element={<SnapchatPoints />} />
+            <Route path="/snapchat-story-views" element={<SnapchatStoryViews />} />
+            <Route path="/snapchat-followers" element={<SnapchatFollowers />} />
+            <Route path="/snapchat-accounts" element={<SnapchatAccounts />} />
+            <Route path="/snapchat-ads" element={<SnapchatAds />} />
+            <Route path="/username-3char" element={<Username3Char />} />
+            <Route path="/username-4char" element={<Username4Char />} />
+            <Route path="/social-media-services" element={<SocialMediaServices />} />
+            <Route path="/accounts-for-sale" element={<AccountsForSale />} />
+            <Route path="/ads-campaigns-services" element={<AdsCampaigns />} />
+            <Route path="/verification-services" element={<Verification />} />
+            <Route path="/usernames-services" element={<Usernames />} />
+            <Route path="/social" element={<PageSocial />} />
+            <Route path="/accounts-sale" element={<PageAccountsSale />} />
+            <Route path="/ads-campaigns" element={<PageAdsCampaigns />} />
+            <Route path="/verification" element={<PageVerification />} />
+            <Route path="/accounts-management" element={<PageAccountsManagement />} />
+            <Route path="/graphic-design" element={<PageGraphicDesign />} />
+            <Route path="/web-apps" element={<PageWebApps />} />
+            <Route path="/all-reviews" element={<AllReviews />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <WhatsAppButton />
+        <Footer />
+        <BottomNavbar />
+      </div>
+    </CartProvider>
   );
 }
 

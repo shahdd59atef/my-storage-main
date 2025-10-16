@@ -244,6 +244,60 @@
   text-align: right;
 }
 
+.accounts-for-sale__product-price--discounted {
+  color: #E02424 !important;
+}
+
+/* Discount Section Styles */
+.accounts-for-sale__pricing {
+  margin-bottom: 1rem;
+}
+
+.accounts-for-sale__discount-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.accounts-for-sale__discount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.accounts-for-sale__discount-badge {
+  background: #F7EC06;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.accounts-for-sale__savings {
+  color: #7ED3B3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.accounts-for-sale__price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.accounts-for-sale__original-price {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .accounts-for-sale__product-actions {
   display: flex;
   align-items: center;
@@ -574,6 +628,19 @@
   .accounts-for-sale__product-price {
     font-size: 1.2rem;
   }
+
+  .accounts-for-sale__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .accounts-for-sale__discount-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .accounts-for-sale__savings {
+    font-size: 0.75rem;
+  }
   
   .accounts-for-sale__product-actions {
     flex-direction: row;
@@ -741,6 +808,19 @@
   .accounts-for-sale__product-price {
     font-size: 1.15rem;
     margin-bottom: 1.2rem;
+  }
+
+  .accounts-for-sale__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .accounts-for-sale__discount-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .accounts-for-sale__savings {
+    font-size: 0.7rem;
   }
 
   .accounts-for-sale__product-actions {

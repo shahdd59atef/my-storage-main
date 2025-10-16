@@ -227,6 +227,56 @@
   color: #ffffff;
 }
 
+.design-slider__price--discounted {
+  color: #E02424;
+}
+
+/* Discount Section Styles */
+.design-slider__discount-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.design-slider__discount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.design-slider__discount-badge {
+  background: #F7EC06;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.design-slider__savings {
+  color: #7ED3B3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.design-slider__price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.design-slider__original-price {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .design-slider__price-unit {
   font-size: 1rem;
   color: #ffffff;
@@ -305,11 +355,15 @@
   gap: 1rem;
 }
 
-.design-slider__price {
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: #ffffff;
-}
+  .design-slider__price {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #ffffff;
+  }
+
+  .design-slider__price--discounted {
+    color: #E02424;
+  }
 
 .design-slider__old-price {
   font-size: 1rem;
@@ -452,6 +506,11 @@
 
   .design-slider__price {
     font-size: 1.4rem;
+    color: #ffffff;
+  }
+
+  .design-slider__price--discounted {
+    color: #E02424;
   }
 
   .design-slider__old-price {
@@ -459,6 +518,20 @@
   }
 
   .design-slider__saved {
+    font-size: 0.85rem;
+  }
+
+  .design-slider__discount-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .design-slider__savings {
+    font-size: 0.75rem;
+    color: #7ED3B3;
+  }
+
+  .design-slider__original-price {
     font-size: 0.85rem;
   }
 }
@@ -551,6 +624,11 @@
 
   .design-slider__price {
     font-size: 1.3rem;
+    color: #ffffff;
+  }
+
+  .design-slider__price--discounted {
+    color: #E02424;
   }
 
   .design-slider__old-price {
@@ -559,6 +637,24 @@
 
   .design-slider__saved {
     font-size: 0.82rem;
+  }
+
+  .design-slider__discount-container {
+    gap: 0.8rem;
+  }
+
+  .design-slider__discount-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .design-slider__savings {
+    font-size: 0.7rem;
+    color: #7ED3B3;
+  }
+
+  .design-slider__original-price {
+    font-size: 0.8rem;
   }
 }
 
@@ -628,6 +724,11 @@
 
   .design-slider__price {
     font-size: 1.2rem;
+    color: #ffffff;
+  }
+
+  .design-slider__price--discounted {
+    color: #E02424;
   }
 
   .design-slider__old-price {
@@ -636,6 +737,24 @@
 
   .design-slider__saved {
     font-size: 0.78rem;
+  }
+
+  .design-slider__discount-container {
+    gap: 0.6rem;
+  }
+
+  .design-slider__discount-badge {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+  }
+
+  .design-slider__savings {
+    font-size: 0.65rem;
+    color: #7ED3B3;
+  }
+
+  .design-slider__original-price {
+    font-size: 0.75rem;
   }
 }
 

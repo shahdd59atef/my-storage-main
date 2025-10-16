@@ -72,6 +72,60 @@
   margin: 0;
 }
 
+.product-card-price--discounted {
+  color: #E02424;
+}
+
+/* Discount Section Styles */
+.product-card-pricing {
+  margin-bottom: 1rem;
+}
+
+.product-card-discount-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.product-card-discount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.product-card-discount-badge {
+  background: #F7EC06;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.product-card-savings {
+  color: #7ED3B3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.product-card-price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.product-card-original-price {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .product-card-sold {
   display: flex;
   align-items: center;
@@ -167,6 +221,52 @@
 
 .product-card-share-btn:active {
   transform: translateY(0);
+}
+
+/* Share menu */
+.product-card-share { position: relative; }
+.product-card-share-menu { 
+  position: absolute; 
+  top: -10px; 
+  right: 52px; 
+  background: #ffffff; 
+  border-radius: 10px; 
+  padding: 8px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+  min-width: 50px; 
+  z-index: 30; 
+  box-shadow: 0 10px 30px rgba(0,0,0,.35); 
+}
+.product-card-share-menu::after { 
+  content: ''; 
+  position: absolute; 
+  top: 12px; 
+  right: -6px; 
+  width: 12px; 
+  height: 12px; 
+  background: #ffffff; 
+  transform: rotate(45deg); 
+}
+.product-card-share-menu .share-item { 
+  background: transparent; 
+  color: #333; 
+  border: none; 
+  padding: 8px; 
+  border-radius: 6px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  transition: all 0.2s ease;
+}
+.product-card-share-menu .share-item:hover { 
+  background: rgba(0,0,0,.1); 
+  transform: scale(1.1);
 }
 
 /* Responsive Design */

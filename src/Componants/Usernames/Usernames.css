@@ -244,6 +244,60 @@
   text-align: right;
 }
 
+.usernames__product-price--discounted {
+  color: #E02424 !important;
+}
+
+/* Discount Section Styles */
+.usernames__pricing {
+  margin-bottom: 1rem;
+}
+
+.usernames__discount-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.usernames__discount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.usernames__discount-badge {
+  background: #F7EC06;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.usernames__savings {
+  color: #7ED3B3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.usernames__price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.usernames__original-price {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .usernames__product-actions {
   display: flex;
   align-items: center;
@@ -565,6 +619,19 @@
   .usernames__product-price {
     font-size: 1.2rem;
   }
+
+  .usernames__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .usernames__discount-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .usernames__savings {
+    font-size: 0.75rem;
+  }
   
   .usernames__product-actions {
     flex-direction: row;
@@ -691,6 +758,19 @@
   .usernames__product-price {
     font-size: 1.15rem;
     margin-bottom: 1.2rem;
+  }
+
+  .usernames__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .usernames__discount-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .usernames__savings {
+    font-size: 0.7rem;
   }
 
   .usernames__product-actions {

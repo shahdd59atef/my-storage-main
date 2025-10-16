@@ -22,7 +22,11 @@ const Usernames = memo(() => {
     {
       id: 1,
       title: 'يوزرات سناب شات مميزة',
-      price: '100',
+      price: 80,
+      originalPrice: 100,
+      discountPercentage: 20,
+      savings: 20,
+      hasDiscount: true,
       category: 'سناب شات',
       icon: '👻',
       badge: '1★'
@@ -30,7 +34,11 @@ const Usernames = memo(() => {
     {
       id: 2,
       title: 'يوزرات انستقرام فريدة',
-      price: '100',
+      price: 100,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       category: 'انستقرام',
       icon: '📷',
       badge: '1★'
@@ -38,7 +46,11 @@ const Usernames = memo(() => {
     {
       id: 3,
       title: 'يوزرات تيك توك مميزة',
-      price: '100',
+      price: 75,
+      originalPrice: 100,
+      discountPercentage: 25,
+      savings: 25,
+      hasDiscount: true,
       category: 'تيك توك',
       icon: '🎵',
       badge: '1★'
@@ -46,7 +58,11 @@ const Usernames = memo(() => {
     {
       id: 4,
       title: 'يوزرات تويتر نادرة',
-      price: '100',
+      price: 100,
+      originalPrice: null,
+      discountPercentage: null,
+      savings: null,
+      hasDiscount: false,
       category: 'تويتر',
       icon: '🐦',
       badge: '1★'
@@ -173,9 +189,32 @@ const Usernames = memo(() => {
                 </div>
                 <div className="usernames__product-content">
                   <h4 className="usernames__product-title">{product.title}</h4>
-                  <p className="usernames__product-price" dir="rtl">
-                    {product.price} <SaudiRiyalIcon width={12} height={13} />
-                  </p>
+                  {product.hasDiscount ? (
+                    <div className="usernames__pricing" dir="rtl">
+                      <div className="usernames__discount-container">
+                        <div className="usernames__price-info">
+                          <p className="usernames__product-price usernames__product-price--discounted">
+                            {product.price} <SaudiRiyalIcon width={12} height={13} />
+                          </p>
+                          <p className="usernames__original-price">
+                            {product.originalPrice} <SaudiRiyalIcon width={10} height={11} />
+                          </p>
+                        </div>
+                        <div className="usernames__discount-info">
+                          <div className="usernames__discount-badge">
+                            - % {product.discountPercentage}
+                          </div>
+                          <div className="usernames__savings">
+                            وفر {product.savings.toFixed(2)} <SaudiRiyalIcon width={10} height={11} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <p className="usernames__product-price" dir="rtl">
+                      {product.price} <SaudiRiyalIcon width={12} height={13} />
+                    </p>
+                  )}
                   <div className="usernames__product-actions">
                     <button className="usernames__favorite-btn" onClick={handleFavoriteClick}>
                       <IoIosHeartEmpty />

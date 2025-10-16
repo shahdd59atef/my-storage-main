@@ -4,41 +4,57 @@ import { HiArrowSmallRight } from "react-icons/hi2";
 import { CiHeart } from "react-icons/ci";
 import { TbShoppingBag } from "react-icons/tb";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
+import { useCart } from '../../contexts/CartContext';
 import './DesignSlider.css';
 
 const DesignSlider = memo(function DesignSlider() {
+  const { addToCart } = useCart();
+  
   const designs = [
     {
       id: 1,
       title: 'تصميم هوية بصرية شاملة',
       subtitle: 'لوقو وهوية بصرية',
-      price: 800,
+      price: 650,
+      originalPrice: 1200,
+      discountPercentage: 45.83,
+      savings: 550,
       description: 'تصميم هوية بصرية شاملة',
-      highlight: '5 أيام عمل'
+      highlight: '5 أيام عمل',
+      hasDiscount: true
     },
     {
       id: 2,
       title: 'تصاميم سوشيال ميديا',
       subtitle: 'تصاميم السوشيال ميديا',
-      price: 300,
+      price: 250,
+      originalPrice: 300,
+      discountPercentage: 16.67,
+      savings: 50,
       description: 'تصاميم السوشيال ميديا',
-      highlight: '3 أيام عمل'
+      highlight: '3 أيام عمل',
+      hasDiscount: true
     },
     {
       id: 3,
       title: 'بوسترات إعلانية',
       subtitle: 'تصاميم المطبوعات',
-      price: 150,
+      price: 75,
+      originalPrice: 89.99,
+      discountPercentage: 16.66,
+      savings: 14.99,
       description: 'بوسترات إعلانية احترافية',
-      highlight: 'يومين عمل'
+      highlight: 'يومين عمل',
+      hasDiscount: true
     },
     {
       id: 4,
       title: 'تصاميم متجر إلكتروني',
       subtitle: 'تصاميم التجارة الإلكترونية',
-      price: 600,
+      price: 50,
       description: 'تصاميم متجر إلكتروني',
-      highlight: 'اسبوع عمل'
+      highlight: 'اسبوع عمل',
+      hasDiscount: false
     }
   ];
 
@@ -135,6 +151,20 @@ const DesignSlider = memo(function DesignSlider() {
     setIndex(Math.min(Math.max(i, 0), maxIndex));
   }, [maxIndex]);
 
+  const handleAddToCart = useCallback((design) => {
+    addToCart({
+      id: design.id,
+      title: design.subtitle,
+      price: design.price,
+      originalPrice: design.originalPrice,
+      discountPercentage: design.discountPercentage,
+      savings: design.savings,
+      hasDiscount: design.hasDiscount,
+      description: design.description,
+      highlight: design.highlight
+    });
+  }, [addToCart]);
+
   const currentPage = index;
   const totalPages = maxIndex + 1;
 
@@ -157,15 +187,39 @@ const DesignSlider = memo(function DesignSlider() {
                 <div className="design-slider__content">
                   <h4 className="design-slider__description">{design.subtitle}</h4>
                   <div className="design-slider__pricing" dir="rtl">
-                    <span className="design-slider__price">
-                      {design.price} <SaudiRiyalIcon width={14} height={15} />
-                    </span>
+                    {design.hasDiscount ? (
+                      <div className="design-slider__discount-container">
+                        <div className="design-slider__price-info">
+                          <span className="design-slider__price design-slider__price--discounted">
+                            {design.price} <SaudiRiyalIcon width={14} height={15} />
+                          </span>
+                          <span className="design-slider__original-price">
+                            {design.originalPrice} <SaudiRiyalIcon width={12} height={13} />
+                          </span>
+                        </div>
+                        <div className="design-slider__discount-info">
+                          <div className="design-slider__discount-badge">
+                            - % {design.discountPercentage}
+                          </div>
+                          <div className="design-slider__savings">
+                            وفر {design.savings.toFixed(2)} <SaudiRiyalIcon width={12} height={13} />
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <span className="design-slider__price">
+                        {design.price} <SaudiRiyalIcon width={14} height={15} />
+                      </span>
+                    )}
                   </div>
                   <div className="design-slider__actions">
                     <button className="design-slider__favorite-btn">
                       <CiHeart />
                     </button>
-                    <button className="design-slider__add-to-cart">
+                    <button 
+                      className="design-slider__add-to-cart"
+                      onClick={() => handleAddToCart(design)}
+                    >
                       <TbShoppingBag />
                       إضافة للسلة
                     </button>

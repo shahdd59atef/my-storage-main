@@ -4,6 +4,8 @@ import { IoPersonOutline } from "react-icons/io5";
 import { MdDarkMode } from "react-icons/md";
 import { PiShoppingBag } from "react-icons/pi";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { useCart } from '../../contexts/CartContext';
+import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 
 const Navbar = memo(() => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +14,7 @@ const Navbar = memo(() => {
   const [mobileDropdown, setMobileDropdown] = useState(null);
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const { totalItems, totalPrice } = useCart();
 
   const toggleMenu = useCallback(() => {
     setIsMenuOpen(prev => !prev);
@@ -132,10 +135,22 @@ const Navbar = memo(() => {
                   onClick={toggleLoginModal}
                 />
                 <MdDarkMode className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" />
-                <PiShoppingBag 
-                  className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
-                  onClick={() => window.location.href = '/cart'}
-                />
+                <div className="relative group">
+                  <PiShoppingBag 
+                    className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
+                    onClick={() => window.location.href = '/cart'}
+                  />
+                  {totalItems > 0 && (
+                    <div className="absolute -top-2 -right-2 bg-[#F7EC06] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                      {totalItems}
+                    </div>
+                  )}
+                  {totalPrice > 0 && (
+                    <div className="absolute top-6 right-0 bg-[#141420] text-[#F7EC06] text-xs font-semibold px-2 py-1 rounded-md border border-[#F7EC06] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                      {totalPrice.toFixed(2)} <SaudiRiyalIcon width={10} height={10} />
+                    </div>
+                  )}
+                </div>
               </div>
               <div className="flex items-center gap-4">
                 <ul className="flex items-center gap-2.5 list-none m-0 p-0 flex-row-reverse">

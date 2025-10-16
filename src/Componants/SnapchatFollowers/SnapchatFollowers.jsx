@@ -1,9 +1,10 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatFollowers.css';
+import AllReviews from '../AllReviews/AllReviews';
 
 const SnapchatFollowers = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -92,6 +93,32 @@ const SnapchatFollowers = memo(() => {
     setIsDropdownOpen(false);
   };
 
+  const scrollReviews = useCallback((dir) => {
+    const grid = document.querySelector('.snapchat-followers .all-reviews__grid');
+    if (!grid) return;
+    const card = grid.querySelector('.all-reviews__card');
+    const gap = parseFloat(getComputedStyle(grid).gap || '16');
+    const width = card ? card.getBoundingClientRect().width + gap : 320;
+    grid.scrollBy({ left: dir * width, behavior: 'smooth' });
+  }, []);
+
+  // Disable manual scroll (wheel/touch) on reviews grid; arrows only
+  useEffect(() => {
+    const grid = document.querySelector('.snapchat-followers .all-reviews__grid');
+    if (!grid) return;
+    const prevent = (e) => {
+      e.preventDefault();
+    };
+    grid.addEventListener('wheel', prevent, { passive: false });
+    grid.addEventListener('touchmove', prevent, { passive: false });
+    return () => {
+      grid.removeEventListener('wheel', prevent);
+      grid.removeEventListener('touchmove', prevent);
+    };
+  }, []);
+
+  
+
   return (
     <div className="snapchat-followers">
       <main className="snapchat-followers__main">
@@ -159,81 +186,25 @@ const SnapchatFollowers = memo(() => {
             ))}
           </div>
 
-          <div className="packages-slider__dots" style={{justifyContent:'center', marginTop:'1rem'}}>
-            {Array.from({ length: products.length }).map((_, i) => (
-              <button
-                key={i}
-                className="packages-slider__dot"
-                onClick={() => {
-                  const container = document.querySelector('.snapchat-followers__products');
-                  if (!container) return;
-                  const card = container.querySelector('.snapchat-followers__product-card');
-                  if (!card) return;
-                  const cardWidth = card.getBoundingClientRect().width + parseFloat(getComputedStyle(container).gap || '16');
-                  container.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-                }}
-                aria-label={`شريحة ${i+1}`}
-              />
-            ))}
-          </div>
+          {/* dots navigation removed as requested */}
           
-          <section className="snapchat-followers__reviews">
-            <div className="snapchat-followers__reviews-header">
-              <h3 className="snapchat-followers__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="snapchat-followers__reviews-container">
-              <button 
-                className="snapchat-followers__slider-btn snapchat-followers__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ›
-              </button>
-              
-              <button 
-                className="snapchat-followers__slider-btn snapchat-followers__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ‹
-              </button>
-              
-              <div className="snapchat-followers__reviews-slider">
-                <div 
-                  className="snapchat-followers__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
-                >
-                  <div className="snapchat-followers__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="snapchat-followers__review-card">
-                        <div className="snapchat-followers__review-rating">
-                          <span className="snapchat-followers__star"><CiStar /></span>
-                          <span className="snapchat-followers__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="snapchat-followers__reviewer">
-                          <div className="snapchat-followers__reviewer-avatar">
-                            <div className="snapchat-followers__avatar-icon">👤</div>
-                          </div>
-                          <div className="snapchat-followers__reviewer-info">
-                            <h4 className="snapchat-followers__reviewer-name">{review.name}</h4>
-                            <span className="snapchat-followers__reviewer-date">{review.date}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="snapchat-followers__review-content">
-                          <div className="snapchat-followers__quote-open">"</div>
-                          <p className="snapchat-followers__review-text">{review.text}</p>
-                          <div className="snapchat-followers__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <div className="snapchat-followers__reviews-wrap">
+            <button
+              className="snapchat-followers__reviews-arrow snapchat-followers__reviews-arrow--prev"
+              onClick={() => scrollReviews(-1)}
+              aria-label="السابق"
+            >
+              ‹
+            </button>
+            <AllReviews />
+            <button
+              className="snapchat-followers__reviews-arrow snapchat-followers__reviews-arrow--next"
+              onClick={() => scrollReviews(1)}
+              aria-label="التالي"
+            >
+              ›
+            </button>
+          </div>
         </div>
       </main>
     </div>

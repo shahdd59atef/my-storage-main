@@ -117,6 +117,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  direction: rtl; /* Change text direction to right-to-left */
 }
 
 .blog__card-title {

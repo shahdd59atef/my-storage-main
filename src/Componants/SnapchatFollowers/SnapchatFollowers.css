@@ -138,25 +138,21 @@
 }
 
 .snapchat-followers__products {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   gap: 1.5rem;
   margin-top: 3rem;
-  padding-bottom: 0.5rem; /* small space for scrollbar */
-  scroll-snap-type: x proximity;
+  justify-content: center;
 }
 
 /* Product Card */
 .snapchat-followers__product-card {
   background: #343444 !important;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(247, 236, 6, 0.1);
   transition: all 0.3s ease;
   border: 1px solid rgba(247, 236, 6, 0.1);
-  flex: 0 0 300px;             /* fixed width item for horizontal scroll */
-  scroll-snap-align: start;
 }
 
 .snapchat-followers__product-card:hover {
@@ -166,7 +162,7 @@
 
 .snapchat-followers__product-header {
   position: relative;
-  height: 280px;
+  height: 250px;
   overflow: hidden;
 }
 
@@ -292,7 +288,6 @@
   gap: 0.4rem;
   flex: 1;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(247, 236, 6, 0.3);
   font-size: 0.9rem;
 }
 
@@ -308,7 +303,7 @@
 
 .snapchat-followers__contact-btn {
   background: #6c757d;
-  color: #ffffff;
+  color:F7EC06 ;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 18px;
@@ -556,20 +551,9 @@
   }
   
   .snapchat-followers__products {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
     margin-top: 2rem;
-    padding-bottom: 0.4rem;
-  }
-
-  .snapchat-followers__product-card {
-    border-radius: 14px;
-  }
-
-  .snapchat-followers__product-header {
-    height: 250px;
   }
 }
 
@@ -579,21 +563,19 @@
   }
 
   .snapchat-followers__products {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.9rem;
-    margin: 2rem 0 0;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 400px;
+    margin: 2rem auto 0;
   }
 
-  .snapchat-followers__product-card { 
-    flex: 0 0 240px;
-    border-radius: 12px;
+  .snapchat-followers__product-card {
+    width: 100%;
   }
   
   .snapchat-followers__product-header {
     padding: 1.5rem 1.2rem;
-    height: 220px;
+    min-height: 140px;
   }
   
   .snapchat-followers__snapchat-icon {
@@ -715,21 +697,18 @@
   }
   
   .snapchat-followers__products {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 0.8rem;
+    max-width: 100%;
     margin-top: 1.5rem;
+    gap: 1.2rem;
   }
 
   .snapchat-followers__product-card {
-    border-radius: 10px;
-    flex: 0 0 200px; /* أصغر لعرض أكثر من كارت على الشاشات الصغيرة */
+    border-radius: 15px;
   }
   
   .snapchat-followers__product-header {
     padding: 1.2rem 1rem;
-    height: 200px;
+    min-height: 120px;
   }
 
   .snapchat-followers__product-logo {
@@ -899,13 +878,8 @@
   }
 }
 
-@media (max-width: 360px) {
-  .snapchat-followers__product-card {
-    border-radius: 8px;
-    flex: 0 0 180px;
-  }
 
-  .snapchat-followers__product-header {
-    height: 180px;
-  }
-}
+
+
+
+

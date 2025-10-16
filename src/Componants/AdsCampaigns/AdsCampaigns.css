@@ -244,6 +244,60 @@
   text-align: right;
 }
 
+.ads-campaigns__product-price--discounted {
+  color: #E02424 !important;
+}
+
+/* Discount Section Styles */
+.ads-campaigns__pricing {
+  margin-bottom: 1rem;
+}
+
+.ads-campaigns__discount-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+
+.ads-campaigns__discount-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.ads-campaigns__discount-badge {
+  background: #F7EC06;
+  color: #000000;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ads-campaigns__savings {
+  color: #7ED3B3;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ads-campaigns__price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+.ads-campaigns__original-price {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
 .ads-campaigns__product-actions {
   display: flex;
   align-items: center;
@@ -565,6 +619,19 @@
   .ads-campaigns__product-price {
     font-size: 1.2rem;
   }
+
+  .ads-campaigns__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .ads-campaigns__discount-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .ads-campaigns__savings {
+    font-size: 0.75rem;
+  }
   
   .ads-campaigns__product-actions {
     flex-direction: row;
@@ -691,6 +758,19 @@
   .ads-campaigns__product-price {
     font-size: 1.15rem;
     margin-bottom: 1.2rem;
+  }
+
+  .ads-campaigns__product-price--discounted {
+    color: #E02424 !important;
+  }
+
+  .ads-campaigns__discount-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.35rem;
+  }
+
+  .ads-campaigns__savings {
+    font-size: 0.7rem;
   }
 
   .ads-campaigns__product-actions {

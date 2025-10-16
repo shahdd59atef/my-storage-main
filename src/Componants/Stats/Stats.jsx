@@ -3,10 +3,8 @@ import './Stats.css';
 
 export default function Stats() {
   const [counts, setCounts] = useState([0, 0, 0, 0]);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
   const sectionRef = useRef(null);
-  const scrollTimeoutRef = useRef(null);
   const animationFrameRef = useRef(null);
   const startTimeRef = useRef(null);
   
@@ -17,86 +15,46 @@ export default function Stats() {
     { value: 500, label: 'حساب موثق عبر عز' }
   ];
 
-  // Detect when section becomes visible and handle scroll
+  // Start only once when the section first enters viewport (no scroll coupling)
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      
-      const rect = sectionRef.current.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      
-      if (inView && !isVisible) {
-        setIsVisible(true);
-      }
-      
-      if (inView) {
-        setIsScrolling(true);
-        
-        // Clear previous timeout
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
-        
-        // Set new timeout to detect when scrolling stops
-        scrollTimeoutRef.current = setTimeout(() => {
-          setIsScrolling(false);
-        }, 150);
-      }
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasStarted) {
+            setHasStarted(true);
+          }
+        });
+      },
+      { root: null, threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [hasStarted]);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
-  }, [isVisible]);
-
-  // Animation while scrolling
+  // Animate once after visible
   useEffect(() => {
-    if (!isVisible) return;
+    if (!hasStarted) return;
+
+    const duration = 1200; // ms
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
     const animate = (timestamp) => {
-      if (!startTimeRef.current) {
-        startTimeRef.current = timestamp;
-      }
-
+      if (!startTimeRef.current) startTimeRef.current = timestamp;
       const elapsed = timestamp - startTimeRef.current;
-      
-      if (isScrolling) {
-        // While scrolling: count continuously but slowly
-        const slowProgress = Math.min(elapsed / 10000, 1); // Very slow, 10 seconds to complete
-        setCounts(stats.map(stat => Math.floor(stat.value * slowProgress)));
-        
-        if (slowProgress < 1) {
-          animationFrameRef.current = requestAnimationFrame(animate);
-        }
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeOutCubic(progress);
+      setCounts(stats.map((stat) => Math.floor(stat.value * eased)));
+      if (progress < 1) {
+        animationFrameRef.current = requestAnimationFrame(animate);
       } else {
-        // When scrolling stops: quickly complete to final values
-        const quickProgress = Math.min(elapsed / 800, 1); // Fast completion in 0.8 seconds
-        setCounts(stats.map(stat => Math.floor(stat.value * quickProgress)));
-        
-        if (quickProgress < 1) {
-          animationFrameRef.current = requestAnimationFrame(animate);
-        } else {
-          setCounts(stats.map(stat => stat.value));
-        }
+        setCounts(stats.map((s) => s.value));
       }
     };
-
-    // Reset start time when scrolling state changes
-    startTimeRef.current = null;
     animationFrameRef.current = requestAnimationFrame(animate);
-
     return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
+      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
     };
-  }, [isScrolling, isVisible]);
+  }, [hasStarted]);
 
   return (
     <section className="stats" dir="rtl" ref={sectionRef}>
@@ -107,7 +65,7 @@ export default function Stats() {
           {stats.map((stat, index) => (
             <div key={index} className="stats__item">
               <div className="stats__num">
-                <span className={isScrolling ? 'stats__num--animating' : 'stats__num--stable'}>
+                <span className={hasStarted ? 'stats__num--animating' : 'stats__num--stable'}>
                   {counts[index].toLocaleString('en-US')}
                 </span>+
               </div>
