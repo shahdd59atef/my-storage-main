@@ -169,7 +169,6 @@ const Verification = memo(() => {
                   <span className="verification__category-icon">{product.icon}</span>
                   <div className="verification__product-line"></div>
                   <h3 className="verification__product-subtitle">{product.category}</h3>
-                  <span className="verification__star"><CiStar /></span>
                   <span className="verification__badge">{product.badge}</span>
                 </div>
                 <div className="verification__product-content">

@@ -65,11 +65,13 @@
 }
 
 .blog__grid {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* ثابت 3 كروت في الصف */
   gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-content: center; /* center the track */
+  justify-items: center;   /* center items within cells */
 }
 
 .blog__card {
@@ -80,7 +82,9 @@
   border: 1px solid rgba(247, 236, 6, 0.2);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
+  max-width: 373px; /* consistent card width on desktop */
+  margin: 0 auto !important; /* always center the card horizontally */
 }
 
 .blog__card:hover {
@@ -90,19 +94,18 @@
 
 .blog__card-header {
   position: relative;
-  height: 220px; /* increased height slightly */
+  height: 280px; /* ارتفاع مناسب للصورة في الكارت */
   overflow: hidden;
 }
 
 .blog__card-header-image {
   position: absolute;
-  top: 16px; /* مسافة واضحة من أعلى البوكس */
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 80%; /* أصغر من البوكس */
-  max-height: calc(100% - 32px); /* تضمن مسافة أعلى وأسفل داخل البوكس */
-  height: auto;
-  object-fit: contain; /* لا تتخطى حدود البوكس */
+  transform: translate(-50%, -50%);
+  width: 280px; /* عرض مناسب للكارت الجديد */
+  height: 200px; /* ارتفاع مناسب للكارت الجديد */
+  object-fit: cover; /* تغطية كاملة للمساحة */
   border-radius: 12px;
   z-index: 1;
 }
@@ -189,11 +192,46 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .blog__grid {
-    gap: 1.8rem;
+  .blog {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
+
+  .blog__grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 30px !important; /* مسافة بين الكروت */
+    padding: 20px 0 !important;
+    width: 90% !important; /* علشان مايلزقوش في الجنب */
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .blog__card {
+    width: 300px !important; /* مقاس الكارت */
+    margin: 0 auto !important; /* يثبتهم في النص */
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease !important;
+  }
+
+  .blog__card:hover { transform: translateY(-5px) !important; }
+
+  .blog__card-header-image {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important; /* يخلي الصور بنفس المقاس */
+  }
+
+  .blog__card-content { padding: 15px !important; text-align: center !important; }
+  .blog__load-more { display: flex !important; justify-content: center !important; margin-top: 30px !important; }
 }
 
+/* Tablet: force flex column and center */
 @media (max-width: 992px) {
   .blog {
     padding: 140px 1.5rem 3rem;
@@ -204,15 +242,24 @@
   }
 
   .blog__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.8rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
+  .blog__card { max-width: 560px; margin: 0 auto !important; }
+
   .blog__card-header {
-    height: 200px;
+    height: auto; /* تلقائي */
   }
 }
 
+/* Mobile: force flex column and center */
 @media (max-width: 768px) {
   .blog {
     padding: 120px 1rem 2.5rem;
@@ -232,21 +279,28 @@
   }
 
   .blog__grid {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
     gap: 1rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
-  .blog__card {
-    border-radius: 12px;
-  }
+  .blog__card { width: 100%; max-width: 560px; height: auto; border-radius: 12px; margin: 0 auto !important; }
 
   .blog__card-header {
-    height: 160px;
+    height: auto; /* ارتفاع تلقائي */
   }
 
   .blog__card-header-image {
-    width: 85%;
-    max-height: calc(100% - 20px);
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
   }
 
   .blog__card-content {
@@ -263,6 +317,7 @@
     font-size: 0.75rem;
     margin-bottom: 0.8rem;
     line-height: 1.4;
+    line-clamp: 2;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -304,21 +359,27 @@
   }
 
   .blog__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.6rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.8rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 
-  .blog__card {
-    border-radius: 10px;
-  }
+  .blog__card { width: 100%; max-width: 560px; height: auto; border-radius: 10px; margin: 0 auto !important; }
 
   .blog__card-header {
-    height: 120px;
+    height: auto;
   }
 
   .blog__card-header-image {
-    width: 90%;
-    max-height: calc(100% - 16px);
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
   }
 
   .blog__card-content {
@@ -335,6 +396,7 @@
     font-size: 0.62rem;
     margin-bottom: 0.5rem;
     line-height: 1.3;
+    line-clamp: 2;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -359,6 +421,8 @@
   }
 }
 
+/* تم إزالة تخصيص 430px لتفادي التعارض، وتعويضه بقواعد عامة أدق */
+
 @media (max-width: 360px) {
   .blog {
     padding: 90px 0.4rem 1.5rem;
@@ -373,21 +437,27 @@
   }
 
   .blog__grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.4rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.6rem;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 14px;
+    box-sizing: border-box;
   }
 
-  .blog__card {
-    border-radius: 8px;
-  }
+  .blog__card { width: 100%; max-width: 560px; height: auto; border-radius: 8px; margin: 0 auto !important; }
 
   .blog__card-header {
-    height: 100px;
+    height: auto;
   }
 
   .blog__card-header-image {
-    width: 92%;
-    max-height: calc(100% - 12px);
+    position: static;
+    transform: none;
+    width: 100%;
+    height: auto;
   }
 
   .blog__card-content {
@@ -404,6 +474,7 @@
     font-size: 0.55rem;
     margin-bottom: 0.4rem;
     line-height: 1.2;
+    line-clamp: 2;
     -webkit-line-clamp: 2;
   }
 

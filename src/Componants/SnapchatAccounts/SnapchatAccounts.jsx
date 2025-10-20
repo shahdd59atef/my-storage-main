@@ -1,15 +1,26 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatAccounts.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const SnapchatAccounts = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
   const [isLoggedIn, setIsLoggedIn] = useState(false); // يمكن تغييرها حسب حالة تسجيل الدخول
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Use global ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   
   const handleFavoriteClick = () => {
     if (!isLoggedIn) {
@@ -217,63 +228,62 @@ const SnapchatAccounts = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          <section className="snapchat-accounts__reviews">
-            <div className="snapchat-accounts__reviews-header">
-              <h3 className="snapchat-accounts__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="snapchat-accounts__reviews-container">
-              <button 
-                className="snapchat-accounts__slider-btn snapchat-accounts__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="snapchat-accounts__slider-btn snapchat-accounts__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="snapchat-accounts__reviews-slider">
-                <div 
-                  className="snapchat-accounts__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="snapchat-accounts__reviews">
+              <div className="snapchat-accounts__reviews-header">
+                <h3 className="snapchat-accounts__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="snapchat-accounts__reviews-container">
+                <button 
+                  className="snapchat-accounts__slider-btn snapchat-accounts__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="snapchat-accounts__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="snapchat-accounts__review-card">
-                        <div className="snapchat-accounts__review-rating">
-                          <span className="snapchat-accounts__star"><CiStar /></span>
-                          <span className="snapchat-accounts__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="snapchat-accounts__reviewer">
-                          <div className="snapchat-accounts__reviewer-avatar">
-                            <div className="snapchat-accounts__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="snapchat-accounts__slider-btn snapchat-accounts__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="snapchat-accounts__reviews-slider">
+                  <div 
+                    className="snapchat-accounts__reviews-track"
+                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="snapchat-accounts__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="snapchat-accounts__review-card">
+                          <div className="snapchat-accounts__review-rating">
+                            <span className="snapchat-accounts__star"><CiStar /></span>
+                            <span className="snapchat-accounts__rating-number">{review.rating}</span>
                           </div>
-                          <div className="snapchat-accounts__reviewer-info">
-                            <h4 className="snapchat-accounts__reviewer-name">{review.name}</h4>
-                            <span className="snapchat-accounts__reviewer-date">{review.date}</span>
+                          <div className="snapchat-accounts__reviewer">
+                            <div className="snapchat-accounts__reviewer-avatar">
+                              <div className="snapchat-accounts__avatar-icon">👤</div>
+                            </div>
+                            <div className="snapchat-accounts__reviewer-info">
+                              <h4 className="snapchat-accounts__reviewer-name">{review.name}</h4>
+                              <span className="snapchat-accounts__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="snapchat-accounts__review-content">
+                            <div className="snapchat-accounts__quote-open">"</div>
+                            <p className="snapchat-accounts__review-text">{review.text}</p>
+                            <div className="snapchat-accounts__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="snapchat-accounts__review-content">
-                          <div className="snapchat-accounts__quote-open">"</div>
-                          <p className="snapchat-accounts__review-text">{review.text}</p>
-                          <div className="snapchat-accounts__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>

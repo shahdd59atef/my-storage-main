@@ -95,16 +95,3 @@ const AllReviews = memo(() => {
 AllReviews.displayName = 'AllReviews';
 
 export default AllReviews;
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,15 +1,26 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './AdsCampaigns.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const AdsCampaigns = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
   const [isLoggedIn, setIsLoggedIn] = useState(false); // يمكن تغييرها حسب حالة تسجيل الدخول
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Switch to global ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   
   const handleFavoriteClick = () => {
     if (!isLoggedIn) {
@@ -185,7 +196,6 @@ const AdsCampaigns = memo(() => {
                   <span className="ads-campaigns__category-icon">{product.icon}</span>
                   <div className="ads-campaigns__product-line"></div>
                   <h3 className="ads-campaigns__product-subtitle">{product.category}</h3>
-                  <span className="ads-campaigns__star"><CiStar /></span>
                   <span className="ads-campaigns__badge">{product.badge}</span>
                 </div>
                 <div className="ads-campaigns__product-content">
@@ -231,63 +241,62 @@ const AdsCampaigns = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          <section className="ads-campaigns__reviews">
-            <div className="ads-campaigns__reviews-header">
-              <h3 className="ads-campaigns__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="ads-campaigns__reviews-container">
-              <button 
-                className="ads-campaigns__slider-btn ads-campaigns__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="ads-campaigns__slider-btn ads-campaigns__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="ads-campaigns__reviews-slider">
-                <div 
-                  className="ads-campaigns__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="ads-campaigns__reviews">
+              <div className="ads-campaigns__reviews-header">
+                <h3 className="ads-campaigns__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="ads-campaigns__reviews-container">
+                <button 
+                  className="ads-campaigns__slider-btn ads-campaigns__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="ads-campaigns__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="ads-campaigns__review-card">
-                        <div className="ads-campaigns__review-rating">
-                          <span className="ads-campaigns__star"><CiStar /></span>
-                          <span className="ads-campaigns__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="ads-campaigns__reviewer">
-                          <div className="ads-campaigns__reviewer-avatar">
-                            <div className="ads-campaigns__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="ads-campaigns__slider-btn ads-campaigns__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="ads-campaigns__reviews-slider">
+                  <div 
+                    className="ads-campaigns__reviews-track"
+                    style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="ads-campaigns__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="ads-campaigns__review-card">
+                          <div className="ads-campaigns__review-rating">
+                            <span className="ads-campaigns__star"><CiStar /></span>
+                            <span className="ads-campaigns__rating-number">{review.rating}</span>
                           </div>
-                          <div className="ads-campaigns__reviewer-info">
-                            <h4 className="ads-campaigns__reviewer-name">{review.name}</h4>
-                            <span className="ads-campaigns__reviewer-date">{review.date}</span>
+                          <div className="ads-campaigns__reviewer">
+                            <div className="ads-campaigns__reviewer-avatar">
+                              <div className="ads-campaigns__avatar-icon">👤</div>
+                            </div>
+                            <div className="ads-campaigns__reviewer-info">
+                              <h4 className="ads-campaigns__reviewer-name">{review.name}</h4>
+                              <span className="ads-campaigns__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="ads-campaigns__review-content">
+                            <div className="ads-campaigns__quote-open">"</div>
+                            <p className="ads-campaigns__review-text">{review.text}</p>
+                            <div className="ads-campaigns__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="ads-campaigns__review-content">
-                          <div className="ads-campaigns__quote-open">"</div>
-                          <p className="ads-campaigns__review-text">{review.text}</p>
-                          <div className="ads-campaigns__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>

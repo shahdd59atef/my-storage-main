@@ -184,7 +184,6 @@ const Usernames = memo(() => {
                   <span className="usernames__category-icon">{product.icon}</span>
                   <div className="usernames__product-line"></div>
                   <h3 className="usernames__product-subtitle">{product.category}</h3>
-                  <span className="usernames__star"><CiStar /></span>
                   <span className="usernames__badge">{product.badge}</span>
                 </div>
                 <div className="usernames__product-content">

@@ -287,6 +287,13 @@
     min-height: 60vh;
   }
 
+  /* Center page content on mobile */
+  .username-4char__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .username-4char__container {
     padding: 0 1rem;
   }
@@ -316,6 +323,15 @@
     margin-top: 3rem;
     padding: 2rem 1rem;
     border-radius: 18px;
+  }
+
+  .username-4char__reviews-header {
+    text-align: center;
+  }
+
+  .username-4char__reviews-title {
+    text-align: center;
+    padding-right: 0;
   }
 
   .username-4char__reviews-header {

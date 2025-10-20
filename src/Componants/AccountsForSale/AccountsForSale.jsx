@@ -185,7 +185,6 @@ const AccountsForSale = memo(() => {
                   <span className="accounts-for-sale__category-icon">{product.icon}</span>
                   <div className="accounts-for-sale__product-line"></div>
                   <h3 className="accounts-for-sale__product-subtitle">{product.category}</h3>
-                  <span className="accounts-for-sale__star"><CiStar /></span>
                   <span className="accounts-for-sale__badge">{product.badge}</span>
                 </div>
                 <div className="accounts-for-sale__product-content">

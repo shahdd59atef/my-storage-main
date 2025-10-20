@@ -148,7 +148,7 @@
 /* Product Card */
 .snapchat-points__product-card {
   background: #343444 !important;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(247, 236, 6, 0.1);
   transition: all 0.3s ease;
@@ -162,7 +162,7 @@
 
 .snapchat-points__product-header {
   position: relative;
-  height: 280px;
+  height: 250px;
   overflow: hidden;
 }
 
@@ -568,6 +568,13 @@
     padding: 1.5rem 0;
   }
 
+  /* Center page content on mobile */
+  .snapchat-points__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .snapchat-points__products {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -629,6 +636,15 @@
   .snapchat-points__reviews {
     margin-top: 3rem;
     padding: 2rem 1rem;
+  }
+
+  .snapchat-points__reviews-header {
+    text-align: center;
+  }
+
+  .snapchat-points__reviews-title {
+    text-align: center;
+    padding-right: 0;
   }
 
   .snapchat-points__reviews-header {

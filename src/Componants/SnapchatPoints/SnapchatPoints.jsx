@@ -1,14 +1,25 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatPoints.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const SnapchatPoints = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Render global ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   
   const products = [
     {
@@ -159,63 +170,62 @@ const SnapchatPoints = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          <section className="snapchat-points__reviews">
-            <div className="snapchat-points__reviews-header">
-              <h3 className="snapchat-points__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="snapchat-points__reviews-container">
-              <button 
-                className="snapchat-points__slider-btn snapchat-points__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="snapchat-points__slider-btn snapchat-points__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="snapchat-points__reviews-slider">
-                <div 
-                  className="snapchat-points__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="snapchat-points__reviews">
+              <div className="snapchat-points__reviews-header">
+                <h3 className="snapchat-points__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="snapchat-points__reviews-container">
+                <button 
+                  className="snapchat-points__slider-btn snapchat-points__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="snapchat-points__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="snapchat-points__review-card">
-                        <div className="snapchat-points__review-rating">
-                          <span className="snapchat-points__star"><CiStar /></span>
-                          <span className="snapchat-points__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="snapchat-points__reviewer">
-                          <div className="snapchat-points__reviewer-avatar">
-                            <div className="snapchat-points__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="snapchat-points__slider-btn snapchat-points__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="snapchat-points__reviews-slider">
+                  <div 
+                    className="snapchat-points__reviews-track"
+                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="snapchat-points__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="snapchat-points__review-card">
+                          <div className="snapchat-points__review-rating">
+                            <span className="snapchat-points__star"><CiStar /></span>
+                            <span className="snapchat-points__rating-number">{review.rating}</span>
                           </div>
-                          <div className="snapchat-points__reviewer-info">
-                            <h4 className="snapchat-points__reviewer-name">{review.name}</h4>
-                            <span className="snapchat-points__reviewer-date">{review.date}</span>
+                          <div className="snapchat-points__reviewer">
+                            <div className="snapchat-points__reviewer-avatar">
+                              <div className="snapchat-points__avatar-icon">👤</div>
+                            </div>
+                            <div className="snapchat-points__reviewer-info">
+                              <h4 className="snapchat-points__reviewer-name">{review.name}</h4>
+                              <span className="snapchat-points__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="snapchat-points__review-content">
+                            <div className="snapchat-points__quote-open">"</div>
+                            <p className="snapchat-points__review-text">{review.text}</p>
+                            <div className="snapchat-points__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="snapchat-points__review-content">
-                          <div className="snapchat-points__quote-open">"</div>
-                          <p className="snapchat-points__review-text">{review.text}</p>
-                          <div className="snapchat-points__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>

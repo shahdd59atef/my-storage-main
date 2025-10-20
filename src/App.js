@@ -92,7 +92,7 @@ export default App;
 function PageHome(){
   return (
     <>
-      <div style={{ marginTop: '-80px', width: '80%', margin: '-80px auto 0', position: 'relative', zIndex: 1 }}>
+      <div style={{ width: '80%', margin: '0 auto', position: 'relative', zIndex: 1, marginTop: '-30px' }}>
         <HeroSlider
           height="auto"
           images={[
@@ -139,17 +139,27 @@ function PageHome(){
         justifyContent: 'center',
         alignItems: 'center'
       }}>
-        <div style={{ maxWidth: '800px', width: '100%', padding: '0 2rem' }}>
+        <div style={{ 
+          maxWidth: '800px', 
+          width: '100%', 
+          padding: '0 2rem',
+          '@media (max-width: 768px)': {
+            padding: '0 1rem'
+          }
+        }}>
           <img 
             src="https://cdn.salla.sa/form-builder/uyQQNl6lYBFkGGQHN62y4fhIMXRc7ETYgc8RCRZF.jpg" 
             alt="عز"
             style={{ 
               width: '100%', 
               height: 'auto',
+              minHeight: '200px',
               objectFit: 'cover',
+              objectPosition: 'center',
               borderRadius: '12px',
               boxShadow: '0 6px 25px rgba(247,236,6,0.3)',
-              border: '2px solid rgba(247,236,6,0.4)'
+              border: '2px solid rgba(247,236,6,0.4)',
+              display: 'block'
             }}
           />
         </div>
@@ -174,10 +184,13 @@ function PageHome(){
             style={{ 
               width: '100%', 
               height: 'auto',
+              minHeight: '200px',
               objectFit: 'cover',
+              objectPosition: 'center',
               borderRadius: '12px',
               boxShadow: '0 6px 25px rgba(247,236,6,0.3)',
-              border: '2px solid rgba(247,236,6,0.4)'
+              border: '2px solid rgba(247,236,6,0.4)',
+              display: 'block'
             }}
           />
         </div>
@@ -200,7 +213,11 @@ function PageHome(){
             style={{ 
               width: '100%', 
               height: 'auto',
-              objectFit: 'cover'
+              minHeight: '200px',
+              objectFit: 'cover',
+              objectPosition: 'center',
+              borderRadius: '12px',
+              display: 'block'
             }}
           />
         </div>

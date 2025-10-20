@@ -1,9 +1,20 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { CiStar } from "react-icons/ci";
 import './Username3Char.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const Username3Char = memo(() => {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Use unified ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   const reviews = [
     {
@@ -50,63 +61,62 @@ const Username3Char = memo(() => {
           </div>
 
           {/* Customer Reviews Section */}
-          <section className="username-3char__reviews">
-            <div className="username-3char__reviews-header">
-              <h3 className="username-3char__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="username-3char__reviews-container">
-              <button 
-                className="username-3char__slider-btn username-3char__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="username-3char__slider-btn username-3char__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="username-3char__reviews-slider">
-                <div 
-                  className="username-3char__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="username-3char__reviews">
+              <div className="username-3char__reviews-header">
+                <h3 className="username-3char__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="username-3char__reviews-container">
+                <button 
+                  className="username-3char__slider-btn username-3char__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="username-3char__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="username-3char__review-card">
-                        <div className="username-3char__review-rating">
-                          <span className="username-3char__star"><CiStar /></span>
-                          <span className="username-3char__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="username-3char__reviewer">
-                          <div className="username-3char__reviewer-avatar">
-                            <div className="username-3char__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="username-3char__slider-btn username-3char__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="username-3char__reviews-slider">
+                  <div 
+                    className="username-3char__reviews-track"
+                    style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="username-3char__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="username-3char__review-card">
+                          <div className="username-3char__review-rating">
+                            <span className="username-3char__star"><CiStar /></span>
+                            <span className="username-3char__rating-number">{review.rating}</span>
                           </div>
-                          <div className="username-3char__reviewer-info">
-                            <h4 className="username-3char__reviewer-name">{review.name}</h4>
-                            <span className="username-3char__reviewer-date">{review.date}</span>
+                          <div className="username-3char__reviewer">
+                            <div className="username-3char__reviewer-avatar">
+                              <div className="username-3char__avatar-icon">👤</div>
+                            </div>
+                            <div className="username-3char__reviewer-info">
+                              <h4 className="username-3char__reviewer-name">{review.name}</h4>
+                              <span className="username-3char__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="username-3char__review-content">
+                            <div className="username-3char__quote-open">"</div>
+                            <p className="username-3char__review-text">{review.text}</p>
+                            <div className="username-3char__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="username-3char__review-content">
-                          <div className="username-3char__quote-open">"</div>
-                          <p className="username-3char__review-text">{review.text}</p>
-                          <div className="username-3char__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>

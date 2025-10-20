@@ -1,14 +1,26 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatCapture.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const SnapchatCapture = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Render the global ReviewsSlider design on mobile only to avoid affecting desktop.
+  useEffect(() => {
+    // Avoid SSR issues and keep the listener lightweight
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   
   const products = [
     {
@@ -160,63 +172,64 @@ const SnapchatCapture = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          <section className="snapchat-capture__reviews">
-            <div className="snapchat-capture__reviews-header">
-              <h3 className="snapchat-capture__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="snapchat-capture__reviews-container">
-              <button 
-                className="snapchat-capture__slider-btn snapchat-capture__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="snapchat-capture__slider-btn snapchat-capture__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="snapchat-capture__reviews-slider">
-                <div 
-                  className="snapchat-capture__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            // On mobile: reuse the global ReviewsSlider to match the desired responsive look
+            <ReviewsSlider />
+          ) : (
+            // On desktop: keep the current SnapchatCapture reviews UI untouched
+            <section className="snapchat-capture__reviews">
+              <div className="snapchat-capture__reviews-header">
+                <h3 className="snapchat-capture__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="snapchat-capture__reviews-container">
+                <button 
+                  className="snapchat-capture__slider-btn snapchat-capture__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="snapchat-capture__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="snapchat-capture__review-card">
-                        <div className="snapchat-capture__review-rating">
-                          <span className="snapchat-capture__star"><CiStar /></span>
-                          <span className="snapchat-capture__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="snapchat-capture__reviewer">
-                          <div className="snapchat-capture__reviewer-avatar">
-                            <div className="snapchat-capture__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="snapchat-capture__slider-btn snapchat-capture__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="snapchat-capture__reviews-slider">
+                  <div 
+                    className="snapchat-capture__reviews-track"
+                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="snapchat-capture__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="snapchat-capture__review-card">
+                          <div className="snapchat-capture__review-rating">
+                            <span className="snapchat-capture__star"><CiStar /></span>
+                            <span className="snapchat-capture__rating-number">{review.rating}</span>
                           </div>
-                          <div className="snapchat-capture__reviewer-info">
-                            <h4 className="snapchat-capture__reviewer-name">{review.name}</h4>
-                            <span className="snapchat-capture__reviewer-date">{review.date}</span>
+                          <div className="snapchat-capture__reviewer">
+                            <div className="snapchat-capture__reviewer-avatar">
+                              <div className="snapchat-capture__avatar-icon">👤</div>
+                            </div>
+                            <div className="snapchat-capture__reviewer-info">
+                              <h4 className="snapchat-capture__reviewer-name">{review.name}</h4>
+                              <span className="snapchat-capture__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="snapchat-capture__review-content">
+                            <div className="snapchat-capture__quote-open">"</div>
+                            <p className="snapchat-capture__review-text">{review.text}</p>
+                            <div className="snapchat-capture__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="snapchat-capture__review-content">
-                          <div className="snapchat-capture__quote-open">"</div>
-                          <p className="snapchat-capture__review-text">{review.text}</p>
-                          <div className="snapchat-capture__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>

@@ -4,12 +4,22 @@ import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatFollowers.css';
-import AllReviews from '../AllReviews/AllReviews';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const SnapchatFollowers = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Use the unified ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
   
   const products = [
     {
@@ -93,29 +103,6 @@ const SnapchatFollowers = memo(() => {
     setIsDropdownOpen(false);
   };
 
-  const scrollReviews = useCallback((dir) => {
-    const grid = document.querySelector('.snapchat-followers .all-reviews__grid');
-    if (!grid) return;
-    const card = grid.querySelector('.all-reviews__card');
-    const gap = parseFloat(getComputedStyle(grid).gap || '16');
-    const width = card ? card.getBoundingClientRect().width + gap : 320;
-    grid.scrollBy({ left: dir * width, behavior: 'smooth' });
-  }, []);
-
-  // Disable manual scroll (wheel/touch) on reviews grid; arrows only
-  useEffect(() => {
-    const grid = document.querySelector('.snapchat-followers .all-reviews__grid');
-    if (!grid) return;
-    const prevent = (e) => {
-      e.preventDefault();
-    };
-    grid.addEventListener('wheel', prevent, { passive: false });
-    grid.addEventListener('touchmove', prevent, { passive: false });
-    return () => {
-      grid.removeEventListener('wheel', prevent);
-      grid.removeEventListener('touchmove', prevent);
-    };
-  }, []);
 
   
 
@@ -188,23 +175,63 @@ const SnapchatFollowers = memo(() => {
 
           {/* dots navigation removed as requested */}
           
-          <div className="snapchat-followers__reviews-wrap">
-            <button
-              className="snapchat-followers__reviews-arrow snapchat-followers__reviews-arrow--prev"
-              onClick={() => scrollReviews(-1)}
-              aria-label="السابق"
-            >
-              ‹
-            </button>
-            <AllReviews />
-            <button
-              className="snapchat-followers__reviews-arrow snapchat-followers__reviews-arrow--next"
-              onClick={() => scrollReviews(1)}
-              aria-label="التالي"
-            >
-              ›
-            </button>
-          </div>
+          {/* Customer Reviews Section */}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="snapchat-followers__reviews">
+              <div className="snapchat-followers__reviews-header">
+                <h3 className="snapchat-followers__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="snapchat-followers__reviews-container">
+                <button 
+                  className="snapchat-followers__slider-btn snapchat-followers__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
+                >
+                  ‹
+                </button>
+                <button 
+                  className="snapchat-followers__slider-btn snapchat-followers__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="snapchat-followers__reviews-slider">
+                  <div 
+                    className="snapchat-followers__reviews-track"
+                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="snapchat-followers__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="snapchat-followers__review-card">
+                          <div className="snapchat-followers__review-rating">
+                            <span className="snapchat-followers__star"><CiStar /></span>
+                            <span className="snapchat-followers__rating-number">{review.rating}</span>
+                          </div>
+                          <div className="snapchat-followers__reviewer">
+                            <div className="snapchat-followers__reviewer-avatar">
+                              <div className="snapchat-followers__avatar-icon">👤</div>
+                            </div>
+                            <div className="snapchat-followers__reviewer-info">
+                              <h4 className="snapchat-followers__reviewer-name">{review.name}</h4>
+                              <span className="snapchat-followers__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="snapchat-followers__review-content">
+                            <div className="snapchat-followers__quote-open">"</div>
+                            <p className="snapchat-followers__review-text">{review.text}</p>
+                            <div className="snapchat-followers__quote-close">"</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </main>
     </div>

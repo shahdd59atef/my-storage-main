@@ -58,7 +58,7 @@ const Navbar = memo(() => {
 
   return (
     <>
-    <nav className="bg-[#141420] py-1.5 fixed top-0 left-0 right-0 z-[1000] h-30 shadow-[(247,236,6,0.15)] w-full md:w-[85%] md:mx-auto rounded-none md:rounded-xl my-0 md:my-3 px-4 md:px-0">
+    <nav className="bg-[#141420] py-1.5 fixed top-0 left-0 right-0 z-[1000] h-30 shadow-[(247,236,6,0.15)] w-[85%] mx-auto rounded-xl my-3 px-0">
       <div className="max-w-[1000px] mx-auto px-4 flex flex-col gap-1">
         {/* Mobile/Tablet Layout */}
         <div className="flex items-center justify-between w-full md:hidden py-3 px-4">
@@ -135,7 +135,15 @@ const Navbar = memo(() => {
                   onClick={toggleLoginModal}
                 />
                 <MdDarkMode className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" />
-                <div className="relative group">
+                <div className="relative group flex items-center gap-2">
+                  {/* Riyal amount inline next to cart on desktop */}
+                  <div className="hidden lg:flex items-center gap-1">
+                    <SaudiRiyalIcon width={16} height={16} color="#ffffff" />
+                    <span className="text-white text-sm font-semibold">
+                      {totalPrice > 0 ? totalPrice.toFixed(2) : '0.00'}
+                    </span>
+                  </div>
+
                   <PiShoppingBag 
                     className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
                     onClick={() => window.location.href = '/cart'}
@@ -146,8 +154,9 @@ const Navbar = memo(() => {
                     </div>
                   )}
                   {totalPrice > 0 && (
-                    <div className="absolute top-6 right-0 bg-[#141420] text-[#F7EC06] text-xs font-semibold px-2 py-1 rounded-md border border-[#F7EC06] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
-                      {totalPrice.toFixed(2)} <SaudiRiyalIcon width={10} height={10} />
+                    <div className="lg:hidden absolute top-6 right-0 bg-[#141420] text-[#F7EC06] text-xs font-semibold px-2 py-1 rounded-md border border-[#F7EC06] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 flex items-center gap-1">
+                      <span>{totalPrice.toFixed(2)}</span>
+                      <SaudiRiyalIcon width={10} height={10} />
                     </div>
                   )}
                 </div>

@@ -24,6 +24,14 @@ const HeroSlider = memo(function HeroSlider({ images = [], height = 420 }) {
     return () => window.removeEventListener('keydown', handler);
   }, [next, prev]);
 
+  // Auto slide effect - يتبدل كل 3 ثوان
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   // touch swipe
   useEffect(() => {
     const el = containerRef.current;
@@ -43,11 +51,16 @@ const HeroSlider = memo(function HeroSlider({ images = [], height = 420 }) {
     };
   }, [next, prev]);
 
+
   return (
     <div className="hero-slider" style={{ height }} ref={containerRef}>
-      <div className="hero-slider__track" style={{ transform: `translateX(-${index * 100}%)` }}>
+      <div className="hero-slider__track">
         {images.map((src, i) => (
-          <div className="hero-slider__slide" key={i} aria-hidden={i !== index}>
+          <div 
+            className={`hero-slider__slide ${i === index ? 'active' : ''}`} 
+            key={i} 
+            aria-hidden={i !== index}
+          >
             <img src={src} alt={`slide-${i + 1}`} className="hero-slider__img" />
           </div>
         ))}

@@ -7,7 +7,7 @@
 }
 
 .App-main {
-  padding-top: 100px; /* Account for fixed navbar with margin */
+  padding-top: 0px; /* Remove padding to allow images under navbar */
   width: 100%;
   box-sizing: border-box;
 }
@@ -166,6 +166,11 @@
     max-width: 100%;
     margin: 0 auto;
   }
+
+  /* Match banner width to navbar width on mobile */
+  .App-main > div:first-child {
+    width: 85% !important;
+  }
   
   .section {
     padding: 3rem 0;
@@ -176,6 +181,16 @@
   .App-main {
     width: 100%;
     overflow-x: hidden;
+    padding-top: 0px;
+  }
+
+  .image-section {
+    padding: 0.5rem 0;
+  }
+
+  .image-section img {
+    min-height: 180px;
+    border-radius: 10px;
   }
 }
 
@@ -201,6 +216,22 @@
   .section {
     padding: 2rem 0;
     width: 100%;
+  }
+
+  .image-section {
+    padding: 0.25rem 0;
+  }
+
+  .image-section img {
+    min-height: 160px;
+    border-radius: 8px;
+  }
+}
+
+/* Ensure hero slider container width override on mobile/tablet from inline style */
+@media (max-width: 1024px) {
+  .App-main > div:first-child {
+    width: 85% !important;
   }
 }
 

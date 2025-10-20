@@ -1,6 +1,6 @@
 /* Footer Styles - Dark Theme with White Text */
 .footer { 
-  background: #1F1F2C; 
+  background: #14141F; 
   color: #FFFFFF; 
   padding: 4rem 0 2rem; 
   margin-top: 3rem;
@@ -165,14 +165,7 @@
   gap: 0.5rem;
 }
 
-/* Responsive: Remove background and border for contact items */
-@media (max-width: 768px) {
-  .footer__contact-item {
-    background: transparent;
-    padding: 0.5rem 0;
-    border-radius: 0;
-  }
-}
+/* Responsive: Contact items already have transparent background */
 
 .footer__contact-text {
   color: #FFFFFF;
@@ -235,27 +228,12 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive: Remove background and border for links */
-@media (max-width: 768px) {
-  .footer__link {
-    background: transparent;
-    padding: 0.5rem 0;
-    border-radius: 0;
-  }
-}
-
 .footer__link:hover {
   background: #F7EC06;
   color: #1F1F2C;
 }
 
-/* Responsive: Remove hover background for links */
-@media (max-width: 768px) {
-  .footer__link:hover {
-    background: transparent;
-    color: #F7EC06;
-  }
-}
+/* Responsive: Hover effects already updated */
 
 .footer__link-text {
   color: #FFFFFF;
@@ -275,16 +253,7 @@
   color: #1F1F2C;
 }
 
-/* Responsive: Update hover colors for link text and icons */
-@media (max-width: 768px) {
-  .footer__link:hover .footer__link-text {
-    color: #F7EC06;
-  }
-  
-  .footer__link:hover .footer__link-icon {
-    color: #F7EC06;
-  }
-}
+/* Responsive: Hover colors already updated */
 
 /* Bottom Section - Horizontal Layout */
 .footer__bottom {

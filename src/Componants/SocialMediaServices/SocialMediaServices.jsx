@@ -1,15 +1,26 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SocialMediaServices.css';
+import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
 
 const SocialMediaServices = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Use ReviewsSlider on mobile only
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   const handleFavoriteClick = () => {
     if (!isLoggedIn) {
@@ -169,7 +180,6 @@ const SocialMediaServices = memo(() => {
                   <span className="social-media-services__category-icon">{product.icon}</span>
                   <div className="social-media-services__product-line"></div>
                   <h3 className="social-media-services__product-subtitle">{product.category}</h3>
-                  <span className="social-media-services__star"><CiStar /></span>
                   <span className="social-media-services__badge">{product.badge}</span>
                 </div>
                 <div className="social-media-services__product-content">
@@ -192,63 +202,62 @@ const SocialMediaServices = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          <section className="social-media-services__reviews">
-            <div className="social-media-services__reviews-header">
-              <h3 className="social-media-services__reviews-title">آراء العملاء</h3>
-            </div>
-            
-            <div className="social-media-services__reviews-container">
-              <button 
-                className="social-media-services__slider-btn social-media-services__slider-btn--prev"
-                onClick={prevReview}
-                aria-label="السابق"
-              >
-                ‹
-              </button>
-              
-              <button 
-                className="social-media-services__slider-btn social-media-services__slider-btn--next"
-                onClick={nextReview}
-                aria-label="التالي"
-              >
-                ›
-              </button>
-              
-              <div className="social-media-services__reviews-slider">
-                <div 
-                  className="social-media-services__reviews-track"
-                  style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
+          {isMobile ? (
+            <ReviewsSlider />
+          ) : (
+            <section className="social-media-services__reviews">
+              <div className="social-media-services__reviews-header">
+                <h3 className="social-media-services__reviews-title">آراء العملاء</h3>
+              </div>
+              <div className="social-media-services__reviews-container">
+                <button 
+                  className="social-media-services__slider-btn social-media-services__slider-btn--prev"
+                  onClick={prevReview}
+                  aria-label="السابق"
                 >
-                  <div className="social-media-services__reviews-grid">
-                    {reviews.map((review) => (
-                      <div key={review.id} className="social-media-services__review-card">
-                        <div className="social-media-services__review-rating">
-                          <span className="social-media-services__star"><CiStar /></span>
-                          <span className="social-media-services__rating-number">{review.rating}</span>
-                        </div>
-                        
-                        <div className="social-media-services__reviewer">
-                          <div className="social-media-services__reviewer-avatar">
-                            <div className="social-media-services__avatar-icon">👤</div>
+                  ‹
+                </button>
+                <button 
+                  className="social-media-services__slider-btn social-media-services__slider-btn--next"
+                  onClick={nextReview}
+                  aria-label="التالي"
+                >
+                  ›
+                </button>
+                <div className="social-media-services__reviews-slider">
+                  <div 
+                    className="social-media-services__reviews-track"
+                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
+                  >
+                    <div className="social-media-services__reviews-grid">
+                      {reviews.map((review) => (
+                        <div key={review.id} className="social-media-services__review-card">
+                          <div className="social-media-services__review-rating">
+                            <span className="social-media-services__star"><CiStar /></span>
+                            <span className="social-media-services__rating-number">{review.rating}</span>
                           </div>
-                          <div className="social-media-services__reviewer-info">
-                            <h4 className="social-media-services__reviewer-name">{review.name}</h4>
-                            <span className="social-media-services__reviewer-date">{review.date}</span>
+                          <div className="social-media-services__reviewer">
+                            <div className="social-media-services__reviewer-avatar">
+                              <div className="social-media-services__avatar-icon">👤</div>
+                            </div>
+                            <div className="social-media-services__reviewer-info">
+                              <h4 className="social-media-services__reviewer-name">{review.name}</h4>
+                              <span className="social-media-services__reviewer-date">{review.date}</span>
+                            </div>
+                          </div>
+                          <div className="social-media-services__review-content">
+                            <div className="social-media-services__quote-open">"</div>
+                            <p className="social-media-services__review-text">{review.text}</p>
+                            <div className="social-media-services__quote-close">"</div>
                           </div>
                         </div>
-                        
-                        <div className="social-media-services__review-content">
-                          <div className="social-media-services__quote-open">"</div>
-                          <p className="social-media-services__review-text">{review.text}</p>
-                          <div className="social-media-services__quote-close">"</div>
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          )}
         </div>
       </main>
     </div>
