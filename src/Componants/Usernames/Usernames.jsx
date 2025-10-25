@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
+import { Link } from 'react-router-dom';
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './Usernames.css';
 
@@ -226,6 +227,16 @@ const Usernames = memo(() => {
                 </div>
               </div>
             ))}
+          </div>
+          
+          {/* View All Buttons */}
+          <div className="usernames__view-all">
+            <Link to="/username-3char" className="usernames__view-all-btn">
+              يوزر 3 أحرف
+            </Link>
+            <Link to="/username-4char" className="usernames__view-all-btn">
+              يوزر 4 أحرف
+            </Link>
           </div>
           
           {/* Customer Reviews Section */}

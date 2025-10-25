@@ -4,7 +4,7 @@ import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatPoints.css';
-import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
+import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
 const SnapchatPoints = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -12,8 +12,9 @@ const SnapchatPoints = memo(() => {
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
   const [isMobile, setIsMobile] = useState(false);
 
-  // Render global ReviewsSlider on mobile only
+  // Render the global ReviewsSlider design on mobile only to avoid affecting desktop.
   useEffect(() => {
+    // Avoid SSR issues and keep the listener lightweight
     const mq = window.matchMedia('(max-width: 768px)');
     const update = () => setIsMobile(mq.matches);
     update();
@@ -24,16 +25,16 @@ const SnapchatPoints = memo(() => {
   const products = [
     {
       id: 1,
-      title: 'نقاط سناب شات 500 - 1000',
-      price: '150 ',
-      range: '500 - 1000',
+      title: 'نقاط سناب شات 1000 - 3000',
+      price: '150',
+      range: '1000 - 3000',
       badge: '1★'
     },
     {
       id: 2,
-      title: 'نقاط سناب شات 200 - 500',
-      price: '80 ',
-      range: '200 - 500',
+      title: 'نقاط سناب شات 500 - 1500',
+      price: '100',
+      range: '500 - 1500',
       badge: '1★'
     }
   ];
@@ -41,24 +42,24 @@ const SnapchatPoints = memo(() => {
   const reviews = [
     {
       id: 1,
-      text: "خدمة رائعة! حصلت على نقاط سناب شات بسرعة فائقة",
-      name: "سارة أحمد",
-      date: "01/15/2024",
+      text: "مميز",
+      name: "سامي الحارثي",
+      date: "10/22/2021",
       rating: 5
     },
     {
       id: 2,
-      text: "أفضل متجر لنقاط سناب شات، أسعار مميزة وجودة عالية",
-      name: "عبدالله محمد",
-      date: "12/28/2023",
+      text: "متجر ثقة وتعاملهم بطل 😈",
+      name: "NANA",
+      date: "08/16/2022",
       rating: 5
     },
     {
       id: 3,
-      text: "خدمة موثوقة وسريعة، أنصح بهم بشدة",
-      name: "مريم السعيد",
-      date: "11/10/2023",
-      rating: 5
+      text: "الخدمه عندكم مررره سيئه ومافيه تجاوب سريع في الواتس اب",
+      name: "اشواق فيصل",
+      date: "08/20/2025",
+      rating: 1
     }
   ];
 
@@ -170,62 +171,7 @@ const SnapchatPoints = memo(() => {
           </div>
           
           {/* Customer Reviews Section */}
-          {isMobile ? (
-            <ReviewsSlider />
-          ) : (
-            <section className="snapchat-points__reviews">
-              <div className="snapchat-points__reviews-header">
-                <h3 className="snapchat-points__reviews-title">آراء العملاء</h3>
-              </div>
-              <div className="snapchat-points__reviews-container">
-                <button 
-                  className="snapchat-points__slider-btn snapchat-points__slider-btn--prev"
-                  onClick={prevReview}
-                  aria-label="السابق"
-                >
-                  ‹
-                </button>
-                <button 
-                  className="snapchat-points__slider-btn snapchat-points__slider-btn--next"
-                  onClick={nextReview}
-                  aria-label="التالي"
-                >
-                  ›
-                </button>
-                <div className="snapchat-points__reviews-slider">
-                  <div 
-                    className="snapchat-points__reviews-track"
-                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
-                  >
-                    <div className="snapchat-points__reviews-grid">
-                      {reviews.map((review) => (
-                        <div key={review.id} className="snapchat-points__review-card">
-                          <div className="snapchat-points__review-rating">
-                            <span className="snapchat-points__star"><CiStar /></span>
-                            <span className="snapchat-points__rating-number">{review.rating}</span>
-                          </div>
-                          <div className="snapchat-points__reviewer">
-                            <div className="snapchat-points__reviewer-avatar">
-                              <div className="snapchat-points__avatar-icon">👤</div>
-                            </div>
-                            <div className="snapchat-points__reviewer-info">
-                              <h4 className="snapchat-points__reviewer-name">{review.name}</h4>
-                              <span className="snapchat-points__reviewer-date">{review.date}</span>
-                            </div>
-                          </div>
-                          <div className="snapchat-points__review-content">
-                            <div className="snapchat-points__quote-open">"</div>
-                            <p className="snapchat-points__review-text">{review.text}</p>
-                            <div className="snapchat-points__quote-close">"</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
+          <UnifiedReviews />
         </div>
       </main>
     </div>

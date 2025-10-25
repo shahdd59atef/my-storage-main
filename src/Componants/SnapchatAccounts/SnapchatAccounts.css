@@ -1,14 +1,14 @@
 /* SnapchatAccounts Styles */
 .snapchat-accounts {
-  background-color: #1F1F2C;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
+  background: #1F1F2C;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .snapchat-accounts__container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2rem;
 }
 
 /* Main Content */
@@ -145,7 +145,6 @@
   justify-content: center;
 }
 
-/* Product Card */
 .snapchat-accounts__product-card {
   background: #343444 !important;
   border-radius: 20px;
@@ -234,19 +233,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.snapchat-accounts__discount-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: #ffeb3b;
-  color: #333333;
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
 .snapchat-accounts__product-content {
   padding: 2rem 1.5rem;
   direction: rtl; /* Change text direction to right-to-left */
@@ -259,68 +245,11 @@
   margin: 0 0 0.8rem 0;
 }
 
-.snapchat-accounts__price-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
 .snapchat-accounts__product-price {
   color: #F7EC06;
   font-size: 1.3rem;
   font-weight: bold;
-  margin: 0;
-}
-
-.snapchat-accounts__product-price--discounted {
-  color: #E02424;
-}
-
-/* Discount Section Styles */
-.snapchat-accounts__discount-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  width: 100%;
-}
-
-.snapchat-accounts__discount-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  align-items: flex-start;
-}
-
-.snapchat-accounts__discount-badge {
-  background: #F7EC06;
-  color: #000000;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.snapchat-accounts__savings {
-  color: #7ED3B3;
-  font-size: 0.8rem;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.snapchat-accounts__price-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.2rem;
-}
-
-.snapchat-accounts__product-old-price {
-  color: #999999;
-  font-size: 1rem;
-  text-decoration: line-through;
-  margin: 0;
+  margin: 0 0 1.5rem 0;
 }
 
 .snapchat-accounts__product-actions {
@@ -400,6 +329,9 @@
   background: #343444 !important;
   border-radius: 20px;
   border: 1px solid rgba(247, 236, 6, 0.1);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .snapchat-accounts__reviews-header {
@@ -499,15 +431,16 @@
   margin-bottom: 1rem;
 }
 
+.snapchat-accounts__star {
+  font-size: 1.2rem;
+  color: #FACA15 !important;
+  display: inline-block !important;
+}
+
 .snapchat-accounts__rating-number {
   color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
-}
-
-.snapchat-accounts__star {
-  color: #FACA15 !important;
-  display: inline-block !important;
 }
 
 .snapchat-accounts__reviewer {
@@ -539,14 +472,14 @@
 }
 
 .snapchat-accounts__reviewer-name {
-  color: #333333;
+  color: #ffffff;
   font-size: 1rem;
   font-weight: bold;
   margin: 0 0 0.2rem 0;
 }
 
 .snapchat-accounts__reviewer-date {
-  color: #666666;
+  color: #c7c7c7;
   font-size: 0.9rem;
 }
 
@@ -577,7 +510,7 @@
 }
 
 .snapchat-accounts__review-text {
-  color: #333333;
+  color: #e9e9e9;
   font-size: 1rem;
   line-height: 1.6;
   margin: 0;
@@ -632,8 +565,33 @@
 }
 
 @media (max-width: 768px) {
+  .snapchat-accounts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
+  }
+
+  .snapchat-accounts__container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .snapchat-accounts__main {
     padding: 1.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .snapchat-accounts__products {
@@ -641,6 +599,12 @@
     gap: 1.5rem;
     max-width: 400px;
     margin: 2rem auto 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-accounts__product-card {
@@ -667,19 +631,6 @@
 
   .snapchat-accounts__product-price {
     font-size: 1.2rem;
-  }
-
-  .snapchat-accounts__product-price--discounted {
-    color: #E02424;
-  }
-
-  .snapchat-accounts__discount-badge {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
-  }
-
-  .snapchat-accounts__savings {
-    font-size: 0.75rem;
   }
   
   .snapchat-accounts__product-actions {
@@ -709,7 +660,11 @@
   
   .snapchat-accounts__reviews {
     margin-top: 3rem;
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
+    max-width: 420px;
+    width: 100%;
+    max-width: 100%;
+    margin: 3rem auto 0;
   }
 
   .snapchat-accounts__reviews-header {
@@ -731,6 +686,7 @@
   .snapchat-accounts__reviews-grid {
     flex-direction: column;
     gap: 1.2rem;
+    align-items: stretch;
   }
   
   .snapchat-accounts__review-card {
@@ -755,10 +711,26 @@
 @media (max-width: 480px) {
   .snapchat-accounts {
     padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
   }
 
   .snapchat-accounts__container {
     padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-accounts__main {
@@ -788,15 +760,21 @@
     max-width: 100%;
     margin-top: 1.5rem;
     gap: 1.2rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-accounts__product-card {
-    border-radius: 15px;
+    border-radius: 10px;
   }
   
   .snapchat-accounts__product-header {
     padding: 1.2rem 1rem;
-    min-height: 120px;
+    height: 200px;
   }
 
   .snapchat-accounts__product-logo {
@@ -835,13 +813,6 @@
     left: 10px;
     padding: 0.15rem 0.4rem;
   }
-
-  .snapchat-accounts__discount-badge {
-    font-size: 0.7rem;
-    top: 10px;
-    right: 10px;
-    padding: 0.25rem 0.5rem;
-  }
   
   .snapchat-accounts__product-content {
     padding: 1.2rem;
@@ -851,30 +822,10 @@
     font-size: 0.95rem;
     margin-bottom: 0.6rem;
   }
-
-  .snapchat-accounts__price-container {
-    margin-bottom: 1.2rem;
-  }
   
   .snapchat-accounts__product-price {
     font-size: 1.15rem;
-  }
-
-  .snapchat-accounts__product-price--discounted {
-    color: #E02424;
-  }
-
-  .snapchat-accounts__discount-badge {
-    font-size: 0.65rem;
-    padding: 0.15rem 0.35rem;
-  }
-
-  .snapchat-accounts__savings {
-    font-size: 0.7rem;
-  }
-
-  .snapchat-accounts__product-old-price {
-    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
   }
 
   .snapchat-accounts__product-actions {
@@ -906,6 +857,9 @@
     margin-top: 2rem;
     padding: 1.5rem 0.5rem;
     border-radius: 15px;
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem auto 0;
   }
 
   .snapchat-accounts__reviews-header {
@@ -994,6 +948,41 @@
 }
 
 @media (max-width: 360px) {
+  .snapchat-accounts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
+  }
+
+  .snapchat-accounts__container {
+    padding: 0 8px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .snapchat-accounts__reviews-container {
+    padding: 0 0.6rem;
+  }
+
+  .snapchat-accounts__slider-btn {
+    width: 33px;
+    height: 33px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 360px) {
   .snapchat-accounts__product-card {
     border-radius: 8px;
   }
@@ -1002,7 +991,3 @@
     height: 180px;
   }
 }
-
-
-
-

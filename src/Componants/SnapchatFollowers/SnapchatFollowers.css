@@ -310,7 +310,7 @@
 
 .snapchat-followers__contact-btn {
   background: #6c757d;
-  color:F7EC06 ;
+  color: #F7EC06;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 18px;
@@ -565,15 +565,66 @@
 }
 
 @media (max-width: 768px) {
-  .snapchat-followers__main {
-    padding: 1.5rem 0;
-  }
-
-  /* Center page content on mobile */
-  .snapchat-followers__container {
+  .snapchat-followers {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
+  }
+
+  .snapchat-followers__container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .snapchat-followers__main {
+    padding: 1.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .snapchat-followers__sub-nav {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+    padding: 0.8rem 0;
+  }
+  
+  .snapchat-followers__sort-btn {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .snapchat-followers__dropdown-menu {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .snapchat-followers__counter {
+    align-self: center;
+    width: 100%;
+    justify-content: center;
+    padding: 0.5rem;
+    background: rgba(247, 236, 6, 0.05);
+    border-radius: 8px;
+  }
+
+  .snapchat-followers__counter-text {
+    font-size: 0.85rem;
   }
 
   .snapchat-followers__products {
@@ -581,10 +632,17 @@
     gap: 1.5rem;
     max-width: 400px;
     margin: 2rem auto 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-followers__product-card {
     width: 100%;
+    border-radius: 12px;
   }
   
   .snapchat-followers__product-header {
@@ -689,15 +747,33 @@
 
 @media (max-width: 480px) {
   .snapchat-followers {
-    padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 100px 0 2rem;
+    box-sizing: border-box;
   }
 
   .snapchat-followers__container {
     padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-followers__main {
     padding: 1rem 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .snapchat-followers__sub-nav {

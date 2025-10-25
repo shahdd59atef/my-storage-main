@@ -1,5 +1,6 @@
 .services { padding: 3rem 0 4rem; background: #1F1F2C; }
-.services__container { max-width: 100%; width: 100%; margin: 0; padding: 0; }
+
+.services__container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 0 2rem; }
 .services__title { text-align: center; font-size: 30px; font-weight: 800; color: #FFFFFF; margin: 0 0 10px; position: relative; }
 .services__title::after { content: ''; width: 70px; height: 4px; background: linear-gradient(90deg, transparent, #F7EC06, transparent); background-size: 200% 100%; animation: divider-move 1.8s linear infinite; border-radius: 4px; position: absolute; left: 50%; transform: translateX(-50%); bottom: -10px; }
 
@@ -12,11 +13,15 @@
   display: flex; 
   align-items: center; 
   overflow: hidden; 
+  justify-content: center;
 }
 
 .services__viewport { 
   overflow: hidden; 
   flex: 1; 
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .services__track { 
@@ -28,6 +33,8 @@
   justify-content: flex-start;
   flex-wrap: nowrap;
   width: max-content;
+  position: relative;
+  left: 50%;
 }
 
 .services__item {
@@ -77,6 +84,17 @@
   transform: scale(1.1);
 }
 
+
+.services__arrow--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.services__arrow--disabled:hover {
+  background-color: #343444 !important;
+  color: #ffffff !important;
+}
 
 .services__logo {
   display: flex;
@@ -441,7 +459,25 @@
 
 @media (max-width: 768px){
   .services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 2rem 0 3rem;
+    box-sizing: border-box;
+  }
+
+  .services__container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .services__title {
@@ -460,6 +496,8 @@
     padding: 1rem;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    direction: rtl;
   }
   
   .services__item {
@@ -467,12 +505,14 @@
     flex-shrink: 0;
     flex-basis: 130px;
     width: 130px;
+    transition: all 0.3s ease;
   }
 
   .services__card { 
     width: 110px;
     height: 110px;
     border-radius: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .services__img {
@@ -499,6 +539,7 @@
     border: 2px solid #ffffff;
     border-radius: 50%;
     font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .services__arrow:hover {
@@ -519,6 +560,7 @@
   .services__dot {
     width: 9px;
     height: 9px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -544,6 +586,8 @@
     padding: 0.8rem; 
     flex-wrap: nowrap;
     justify-content: flex-start;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    direction: rtl;
   }
   
   .services__item {
@@ -551,12 +595,14 @@
     flex-shrink: 0;
     flex-basis: 110px;
     width: 110px;
+    transition: all 0.3s ease;
   }
 
   .services__card { 
     width: 90px;
     height: 90px;
     border-radius: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .services__img {
@@ -583,6 +629,7 @@
     border: 2px solid #ffffff;
     border-radius: 50%;
     font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .services__arrow:hover {
@@ -603,6 +650,7 @@
   .services__dot {
     width: 8px;
     height: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .services__dot.is-active {
@@ -630,6 +678,8 @@
     padding: 0.6rem;
     flex-wrap: nowrap;
     justify-content: flex-start;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    direction: rtl;
   }
 
   .services__item {
@@ -637,12 +687,14 @@
     flex-shrink: 0;
     flex-basis: 100px;
     width: 100px;
+    transition: all 0.3s ease;
   }
 
   .services__card { 
     width: 80px;
     height: 80px;
     border-radius: 18px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .services__img {
@@ -669,6 +721,7 @@
     border: 2px solid #ffffff;
     border-radius: 50%;
     font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .services__arrow:hover {
@@ -689,6 +742,7 @@
   .services__dot {
     width: 7px;
     height: 7px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .services__dot.is-active {

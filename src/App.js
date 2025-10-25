@@ -25,6 +25,8 @@ import SnapchatStoryViews from './Componants/SnapchatStoryViews/SnapchatStoryVie
 import SnapchatFollowers from './Componants/SnapchatFollowers/SnapchatFollowers';
 import SnapchatAccounts from './Componants/SnapchatAccounts/SnapchatAccounts';
 import SnapchatAds from './Componants/SnapchatAds/SnapchatAds';
+import ViewAll from './Componants/ViewAll/ViewAll';
+import SocialViewAll from './Componants/SocialViewAll/SocialViewAll';
 import Username3Char from './Componants/Username3Char/Username3Char';
 import Username4Char from './Componants/Username4Char/Username4Char';
 import SocialMediaServices from './Componants/SocialMediaServices/SocialMediaServices';
@@ -60,6 +62,8 @@ function App() {
             <Route path="/snapchat-followers" element={<SnapchatFollowers />} />
             <Route path="/snapchat-accounts" element={<SnapchatAccounts />} />
             <Route path="/snapchat-ads" element={<SnapchatAds />} />
+            <Route path="/view-all" element={<ViewAll />} />
+            <Route path="/social-view-all" element={<SocialViewAll />} />
             <Route path="/username-3char" element={<Username3Char />} />
             <Route path="/username-4char" element={<Username4Char />} />
             <Route path="/social-media-services" element={<SocialMediaServices />} />

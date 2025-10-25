@@ -58,10 +58,10 @@ const Navbar = memo(() => {
 
   return (
     <>
-    <nav className="bg-[#141420] py-1.5 fixed top-0 left-0 right-0 z-[1000] h-30 shadow-[(247,236,6,0.15)] w-[85%] mx-auto rounded-xl my-3 px-0">
-      <div className="max-w-[1000px] mx-auto px-4 flex flex-col gap-1">
+    <nav className="bg-[#141420] py-1.5 fixed top-0 left-0 right-0 z-[1000] h-30 shadow-[(247,236,6,0.15)] w-full mx-auto px-0">
+      <div className="max-w-[1000px] mx-auto px-4 flex flex-col gap-1 lg:max-w-[1000px] md:max-w-full md:px-0 sm:max-w-full sm:px-0">
         {/* Mobile/Tablet Layout */}
-        <div className="flex items-center justify-between w-full md:hidden py-3 px-4">
+        <div className="flex items-center justify-between w-full md:hidden py-3 px-4 sm:px-6">
           {/* Left side - Moon icon only */}
           <div className="flex items-center">
             <MdDarkMode className="text-white text-lg cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" />
@@ -122,45 +122,9 @@ const Navbar = memo(() => {
           </div>
         </div>
         <div className="w-full hidden lg:flex flex-col items-center gap-1">
+            {/* First Row - Navigation Links */}
             <div className="w-full flex justify-between items-center pt-1">
-              <div className="flex items-center gap-6 flex-row-reverse mt-10 mr-25">
-                <CiSearch 
-                  id="navbar-search-icon"
-                  className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
-                  onClick={toggleSearchBar}
-                />
-                <IoPersonOutline 
-                  id="navbar-account-icon"
-                  className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
-                  onClick={toggleLoginModal}
-                />
-                <MdDarkMode className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" />
-                <div className="relative group flex items-center gap-2">
-                  {/* Riyal amount inline next to cart on desktop */}
-                  <div className="hidden lg:flex items-center gap-1">
-                    <SaudiRiyalIcon width={16} height={16} color="#ffffff" />
-                    <span className="text-white text-sm font-semibold">
-                      {totalPrice > 0 ? totalPrice.toFixed(2) : '0.00'}
-                    </span>
-                  </div>
-
-                  <PiShoppingBag 
-                    className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
-                    onClick={() => window.location.href = '/cart'}
-                  />
-                  {totalItems > 0 && (
-                    <div className="absolute -top-2 -right-2 bg-[#F7EC06] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
-                      {totalItems}
-                    </div>
-                  )}
-                  {totalPrice > 0 && (
-                    <div className="lg:hidden absolute top-6 right-0 bg-[#141420] text-[#F7EC06] text-xs font-semibold px-2 py-1 rounded-md border border-[#F7EC06] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50 flex items-center gap-1">
-                      <span>{totalPrice.toFixed(2)}</span>
-                      <SaudiRiyalIcon width={10} height={10} />
-                    </div>
-                  )}
-                </div>
-              </div>
+              <div className="w-10"></div>
               <div className="flex items-center gap-4">
                 <ul className="flex items-center gap-2.5 list-none m-0 p-0 flex-row-reverse">
             <li className="relative">
@@ -170,7 +134,7 @@ const Navbar = memo(() => {
               <a href="/social-media-services" className={linkClass}><RiArrowDropDownLine className="inline-block ml-1" /> خدمات مواقع التواصل الاجتماعي</a>
               {openDropdown === 'social' && (
                       <div 
-                        className="absolute top-full right-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
+                        className="absolute top-full left-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
                         onMouseEnter={() => handleMouseEnter('social')}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -214,7 +178,7 @@ const Navbar = memo(() => {
               {/* Dropdown Menu for Sale Accounts */}
               {openDropdown === 'sale' && (
                       <div 
-                        className="absolute top-full right-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
+                        className="absolute top-full left-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
                         onMouseEnter={() => handleMouseEnter('sale')}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -252,7 +216,7 @@ const Navbar = memo(() => {
               {/* Dropdown Menu for Ads Campaigns */}
               {openDropdown === 'ads' && (
                       <div 
-                        className="absolute top-full right-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
+                        className="absolute top-full left-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
                         onMouseEnter={() => handleMouseEnter('ads')}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -303,7 +267,7 @@ const Navbar = memo(() => {
               {/* Dropdown Menu for Usernames */}
               {openDropdown === 'usernames' && (
                       <div 
-                        className="absolute top-full right-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
+                        className="absolute top-full left-0 mt-2 bg-[#141420] rounded-lg shadow-[0_8px_20px_rgba(31,31,44,0.3)] min-w-[280px] p-3 z-50"
                         onMouseEnter={() => handleMouseEnter('usernames')}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -351,6 +315,15 @@ const Navbar = memo(() => {
             <li className="relative" onMouseEnter={() => handleMouseEnter('accounts')} onMouseLeave={handleMouseLeave}>
               <button className={buttonClass}><RiArrowDropDownLine className="inline-block ml-1" /> اداره حسابات</button>
             </li>
+            <li className="relative flex items-center gap-2" onMouseEnter={() => handleMouseEnter('design')} onMouseLeave={handleMouseLeave}>
+              <button className={buttonClass}><RiArrowDropDownLine className="inline-block ml-1" /> التصميم الجرافيكي</button>
+            </li>
+            <li className="relative" onMouseEnter={() => handleMouseEnter('programming')} onMouseLeave={handleMouseLeave}>
+              <button className={buttonClass}><RiArrowDropDownLine className="inline-block ml-1" /> برمجة الويب</button>
+            </li>
+            <li className="relative">
+              <a href="#motion" className={linkClass}>الموشن جرافيك</a>
+            </li>
               </ul>
                 <img 
                   src="https://cdn.salla.sa/cdn-cgi/image/fit=scale-down,width=400,height=400,onerror=redirect,format=auto/DQYwE/wyWnbCpitH0YrIqGM6cmhukxXFJX8zWn8RnN3DLW.png" 
@@ -361,23 +334,39 @@ const Navbar = memo(() => {
 
             </div>
 
-          {/* Second Row */}
-          <div className="w-full flex justify-end items-center pb-1">
-            <div className="flex items-center gap-4">
-              <ul className="flex items-center gap-2.5 list-none m-0 p-0 flex-row-reverse">
-                <li className="relative flex items-center gap-2" onMouseEnter={() => handleMouseEnter('design')} onMouseLeave={handleMouseLeave}>
-                  <button className={buttonClass}><RiArrowDropDownLine className="inline-block ml-1" /> التصميم الجرافيكي</button>
-                </li>
-                <li className="relative" onMouseEnter={() => handleMouseEnter('programming')} onMouseLeave={handleMouseLeave}>
-                  <button className={buttonClass}><RiArrowDropDownLine className="inline-block ml-1" /> برمجة الويب</button>
-                </li>
-                <li className="relative">
-                  <a href="#motion" className={linkClass}>الموشن جرافيك</a>
-                </li>
-              </ul>
-              <div className="w-10"></div>
+            {/* Second Row - Icons */}
+            <div className="w-full flex justify-center items-center pb-1">
+              <div className="flex items-center gap-6 flex-row-reverse">
+                <CiSearch 
+                  id="navbar-search-icon"
+                  className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
+                  onClick={toggleSearchBar}
+                />
+                <IoPersonOutline 
+                  id="navbar-account-icon"
+                  className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
+                  onClick={toggleLoginModal}
+                />
+                <MdDarkMode className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" />
+                <div className="relative group flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    <SaudiRiyalIcon width={16} height={16} color="#ffffff" />
+                    <span className="text-white text-sm font-semibold">
+                      {totalPrice > 0 ? totalPrice.toFixed(2) : '0.00'}
+                    </span>
+                  </div>
+                  <PiShoppingBag 
+                    className="text-gray-500 text-xl cursor-pointer hover:text-[#F7EC06] transition-colors duration-300" 
+                    onClick={() => window.location.href = '/cart'}
+                  />
+                  {totalItems > 0 && (
+                    <div className="absolute -top-2 -right-2 bg-[#F7EC06] text-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+                      {totalItems}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-          </div>
         </div>
 
         {/* Search Modal */}
@@ -445,9 +434,9 @@ const Navbar = memo(() => {
 
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-500 bg-[#141420] border-t border-[rgba(247,236,6,0.2)] ${isMenuOpen ? 'max-h-[1000px] py-4' : 'max-h-0'}`}>
-        <ul className="list-none p-0 m-0 max-w-[900px] mx-auto px-4">
+        {/* Mobile Menu */}
+        <div className={`md:hidden overflow-hidden transition-all duration-500 bg-[#141420] border-t border-[rgba(247,236,6,0.2)] ${isMenuOpen ? 'max-h-[1000px] py-4' : 'max-h-0'}`}>
+          <ul className="list-none p-0 m-0 w-full px-4 sm:px-6">
           <li className="border-b border-[rgba(247,236,6,0.1)]">
             <a href="/blog" className="block py-3 px-3 text-white text-sm no-underline font-semibold transition-all duration-300 hover:text-[#F7EC06] hover:bg-[rgba(247,236,6,0.1)] hover:pr-6 rounded-md" onClick={closeMenu}>
               المدونة
@@ -608,9 +597,9 @@ const Navbar = memo(() => {
         </ul>
       </div>
 
-      {/* Tablet Menu */}
-      <div className={`hidden md:block lg:hidden overflow-hidden transition-all duration-500 bg-[#141420] border-t border-[rgba(247,236,6,0.2)] ${isMenuOpen ? 'max-h-[1000px] py-4' : 'max-h-0'}`}>
-        <ul className="list-none p-0 m-0 max-w-[900px] mx-auto px-4">
+        {/* Tablet Menu */}
+        <div className={`hidden md:block lg:hidden overflow-hidden transition-all duration-500 bg-[#141420] border-t border-[rgba(247,236,6,0.2)] ${isMenuOpen ? 'max-h-[1000px] py-4' : 'max-h-0'}`}>
+          <ul className="list-none p-0 m-0 w-full px-4 sm:px-6">
           <li className="border-b border-[rgba(247,236,6,0.1)]">
             <a href="/blog" className="block py-3 px-3 text-white text-sm no-underline font-semibold transition-all duration-300 hover:text-[#F7EC06] hover:bg-[rgba(247,236,6,0.1)] hover:pr-6 rounded-md" onClick={closeMenu}>
               المدونة

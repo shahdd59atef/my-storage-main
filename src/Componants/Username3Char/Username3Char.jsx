@@ -1,146 +1,206 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState, useCallback } from 'react';
+import { IoIosHeartEmpty } from "react-icons/io";
+import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
+import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './Username3Char.css';
-import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
+import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
 const Username3Char = memo(() => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
   const [isMobile, setIsMobile] = useState(false);
 
-  // Use unified ReviewsSlider on mobile only
+  // Render the global ReviewsSlider design on mobile only to avoid affecting desktop.
   useEffect(() => {
+    // Avoid SSR issues and keep the listener lightweight
     const mq = window.matchMedia('(max-width: 768px)');
     const update = () => setIsMobile(mq.matches);
     update();
     mq.addEventListener('change', update);
     return () => mq.removeEventListener('change', update);
   }, []);
+  
+  const products = [
+    {
+      id: 1,
+      title: 'يوزر ثلاثي سناب شات 1000 مشاهدة',
+      price: '180',
+      range: '1000 مشاهدة',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    },
+    {
+      id: 2,
+      title: 'يوزر ثلاثي انستقرام 500 متابع',
+      price: '150',
+      range: '500 متابع',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    },
+    {
+      id: 3,
+      title: 'يوزر ثلاثي تيك توك 2000 مشاهدة',
+      price: '120',
+      range: '2000 مشاهدة',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    },
+    {
+      id: 4,
+      title: 'يوزر ثلاثي تويتر 1000 متابع',
+      price: '90',
+      range: '1000 متابع',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    },
+    {
+      id: 5,
+      title: 'يوزر ثلاثي فيسبوك 500 إعجاب',
+      price: '80',
+      range: '500 إعجاب',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    },
+    {
+      id: 6,
+      title: 'يوزر ثلاثي يوتيوب 1000 مشاهدة',
+      price: '200',
+      range: '1000 مشاهدة',
+      badge: '5★',
+      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+    }
+  ];
 
   const reviews = [
     {
       id: 1,
-      text: "يوزر ثلاثي مميز وسعر مناسب",
-      name: "فهد الدوسري",
-      date: "02/25/2024",
-      rating: 5
+      name: 'أحمد محمد',
+      rating: 5,
+      date: 'منذ يومين',
+      text: 'خدمات ممتازة وسريعة، أنصح بها بشدة!'
     },
     {
       id: 2,
-      text: "خدمة سريعة ويوزرات فريدة",
-      name: "لينا المطيري",
-      date: "02/20/2024",
-      rating: 5
+      name: 'فاطمة علي',
+      rating: 5,
+      date: 'منذ أسبوع',
+      text: 'جودة عالية وأسعار مناسبة، شكراً لكم'
     },
     {
       id: 3,
-      text: "أفضل موقع ليوزرات ثلاثية",
-      name: "عبدالعزيز القرني",
-      date: "02/10/2024",
-      rating: 5
+      name: 'محمد السعيد',
+      rating: 5,
+      date: 'منذ أسبوعين',
+      text: 'خدمة احترافية ومتابعة ممتازة'
     }
   ];
 
-  // Slider navigation functions
-  const nextReview = () => {
-    setCurrentReviewIndex((prev) => (prev + 1) % reviews.length);
+  const getProductCountText = () => {
+    return `عرض ${products.length} منتج`;
   };
 
-  const prevReview = () => {
+  const nextReview = useCallback(() => {
+    setCurrentReviewIndex((prev) => (prev + 1) % reviews.length);
+  }, [reviews.length]);
+
+  const prevReview = useCallback(() => {
     setCurrentReviewIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  }, [reviews.length]);
+
+  const goToReview = useCallback((index) => {
+    setCurrentReviewIndex(index);
+  }, []);
+
+  const sortOptions = [
+    'ترتيب مقترحاتنا',
+    'السعر: من الأقل للأعلى',
+    'السعر: من الأعلى للأقل',
+    'الأكثر مبيعاً',
+    'الأحدث'
+  ];
+
+  const handleSortSelect = (option) => {
+    setSelectedSort(option);
+    setIsDropdownOpen(false);
   };
 
   return (
-    <div className="username-3char">
-      {/* Main Content */}
-      <main className="username-3char__main">
-        <div className="username-3char__container">
-          <div className="username-3char__empty-state">
-            <div className="username-3char__empty-icon">@️⃣</div>
-            <h2 className="username-3char__empty-title">يوزر ثلاثي</h2>
-            <p className="username-3char__empty-text">قريباً.. سنوفر لك مجموعة مميزة من اليوزرات الثلاثية الفريدة</p>
+    <main className="username-3char">
+      <div className="username-3char__container">
+        <div className="username-3char__main">
+          {/* Sub Navigation */}
+          <div className="username-3char__sub-nav">
+            <div className="username-3char__dropdown-container">
+              <button 
+                className="username-3char__sort-btn"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                {selectedSort}
+                <span className="username-3char__dropdown-arrow">▼</span>
+              </button>
+              
+              {isDropdownOpen && (
+                <div className="username-3char__dropdown-menu">
+                  {sortOptions.map((option, index) => (
+                    <button
+                      key={index}
+                      className="username-3char__dropdown-item"
+                      onClick={() => handleSortSelect(option)}
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            <div className="username-3char__counter">
+              <span className="username-3char__counter-text">{getProductCountText()}</span>
+            </div>
           </div>
 
-          {/* Customer Reviews Section */}
-          {isMobile ? (
-            <ReviewsSlider />
-          ) : (
-            <section className="username-3char__reviews">
-              <div className="username-3char__reviews-header">
-                <h3 className="username-3char__reviews-title">آراء العملاء</h3>
-              </div>
-              <div className="username-3char__reviews-container">
-                <button 
-                  className="username-3char__slider-btn username-3char__slider-btn--prev"
-                  onClick={prevReview}
-                  aria-label="السابق"
-                >
-                  ‹
-                </button>
-                <button 
-                  className="username-3char__slider-btn username-3char__slider-btn--next"
-                  onClick={nextReview}
-                  aria-label="التالي"
-                >
-                  ›
-                </button>
-                <div className="username-3char__reviews-slider">
-                  <div 
-                    className="username-3char__reviews-track"
-                    style={{ transform: `translateX(-${currentReviewIndex * 100}%)` }}
-                  >
-                    <div className="username-3char__reviews-grid">
-                      {reviews.map((review) => (
-                        <div key={review.id} className="username-3char__review-card">
-                          <div className="username-3char__review-rating">
-                            <span className="username-3char__star"><CiStar /></span>
-                            <span className="username-3char__rating-number">{review.rating}</span>
-                          </div>
-                          <div className="username-3char__reviewer">
-                            <div className="username-3char__reviewer-avatar">
-                              <div className="username-3char__avatar-icon">👤</div>
-                            </div>
-                            <div className="username-3char__reviewer-info">
-                              <h4 className="username-3char__reviewer-name">{review.name}</h4>
-                              <span className="username-3char__reviewer-date">{review.date}</span>
-                            </div>
-                          </div>
-                          <div className="username-3char__review-content">
-                            <div className="username-3char__quote-open">"</div>
-                            <p className="username-3char__review-text">{review.text}</p>
-                            <div className="username-3char__quote-close">"</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+          {/* Products Grid */}
+          <div className="username-3char__products">
+            {products.map((product) => (
+              <div key={product.id} className="username-3char__product-card">
+                <div className="username-3char__product-header">
+                  <div className="username-3char__product-header-image">
+                    <img 
+                      src={product.image} 
+                      alt={product.title}
+                    />
+                  </div>
+                </div>
+                
+                <div className="username-3char__product-content">
+                  <h3 className="username-3char__product-title">{product.title}</h3>
+                  <div className="username-3char__product-price">
+                    <SaudiRiyalIcon />
+                    <span>{product.price}</span>
+                  </div>
+                  
+                  <div className="username-3char__product-actions">
+                    <button className="username-3char__favorite-btn">
+                      <IoIosHeartEmpty />
+                    </button>
+                    <button className="username-3char__add-to-cart">
+                      <PiShoppingBag />
+                      <span>أضف للسلة</span>
+                    </button>
                   </div>
                 </div>
               </div>
-            </section>
-          )}
+            ))}
+          </div>
+
+          {/* Reviews Section */}
+          <UnifiedReviews />
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 });
 
-Username3Char.displayName = 'Username3Char';
-
 export default Username3Char;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

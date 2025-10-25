@@ -591,13 +591,21 @@
     padding: 1.5rem 0;
   }
 
+  /* Center page content on mobile and force single column */
+  .ads-campaigns__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .ads-campaigns__products {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.3rem;
   }
 
   .ads-campaigns__product-card {
     border-radius: 12px;
+    width: 100%;
   }
   
   .ads-campaigns__product-header {

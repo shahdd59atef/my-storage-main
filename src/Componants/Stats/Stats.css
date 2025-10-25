@@ -3,6 +3,7 @@
   padding: 3rem 0; 
 }
 
+
 .stats__container { 
   max-width: 1200px; 
   margin: 0 auto; 
@@ -102,11 +103,26 @@
 
 @media (max-width: 768px){
   .stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 2rem 0;
+    box-sizing: border-box;
   }
 
   .stats__container {
     padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .stats__title {

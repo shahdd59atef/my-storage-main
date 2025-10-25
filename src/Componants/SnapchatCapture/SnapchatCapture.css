@@ -565,8 +565,33 @@
 }
 
 @media (max-width: 768px) {
+  .snapchat-capture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
+  }
+
+  .snapchat-capture__container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .snapchat-capture__main {
     padding: 1.5rem 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .snapchat-capture__products {
@@ -574,6 +599,12 @@
     gap: 1.5rem;
     max-width: 400px;
     margin: 2rem auto 0;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-capture__product-card {
@@ -631,6 +662,9 @@
     margin-top: 3rem;
     padding: 1.5rem 1rem;
     max-width: 420px;
+    width: 100%;
+    max-width: 100%;
+    margin: 3rem auto 0;
   }
 
   .snapchat-capture__reviews-header {
@@ -677,10 +711,26 @@
 @media (max-width: 480px) {
   .snapchat-capture {
     padding-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
   }
 
   .snapchat-capture__container {
     padding: 0 10px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-capture__main {
@@ -710,6 +760,12 @@
     max-width: 100%;
     margin-top: 1.5rem;
     gap: 1.2rem;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-capture__product-card {
@@ -801,6 +857,9 @@
     margin-top: 2rem;
     padding: 1.5rem 0.5rem;
     border-radius: 15px;
+    width: 100%;
+    max-width: 100%;
+    margin: 2rem auto 0;
   }
 
   .snapchat-capture__reviews-header {
@@ -889,8 +948,27 @@
 }
 
 @media (max-width: 360px) {
+  .snapchat-capture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 120px 0 2.5rem;
+    box-sizing: border-box;
+  }
+
   .snapchat-capture__container {
     padding: 0 8px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .snapchat-capture__reviews-container {

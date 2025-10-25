@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback, useEffect } from 'react';
 import { HiArrowSmallLeft } from "react-icons/hi2";
 import { HiArrowSmallRight } from "react-icons/hi2";
 import { CiHeart } from "react-icons/ci";
@@ -50,18 +50,42 @@ const SocialServicesSlider = memo(function SocialServicesSlider() {
     }
   ];
 
-  const visible = 3;
+  // Responsive visible cards based on screen size
+  const getVisibleCards = useCallback(() => {
+    const width = window.innerWidth;
+    if (width > 1024) return 3;      // Desktop: 3 cards
+    if (width > 768) return 2;       // Tablet: 2 cards
+    if (width > 480) return 1;       // Mobile: 1 card
+    return 1;                        // Small Mobile: 1 card
+  }, []);
+
+  const [visible, setVisible] = useState(getVisibleCards);
   const [index, setIndex] = useState(0);
   const maxIndex = Math.max(0, services.length - visible);
 
-  // Manual navigation functions
-  const nextSlide = () => {
-    setIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
-  };
+  // Update visible cards on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setVisible(getVisibleCards());
+    };
 
-  const prevSlide = () => {
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [getVisibleCards]);
+
+  // Manual navigation functions with useCallback for performance
+  const nextSlide = useCallback(() => {
+    setIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
+  }, [maxIndex]);
+
+  const prevSlide = useCallback(() => {
     setIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1));
-  };
+  }, [maxIndex]);
+
+  // Reset index when visible cards change
+  useEffect(() => {
+    setIndex(0);
+  }, [visible]);
 
   return (
     <section className="social-services" dir="rtl">

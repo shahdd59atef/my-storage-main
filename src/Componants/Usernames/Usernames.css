@@ -156,6 +156,10 @@
   position: relative;
   width: 287px;
   height: 539px;
+  min-height: 539px;
+  max-height: 539px;
+  display: flex;
+  flex-direction: column;
 }
 
 .usernames__product-card:hover {
@@ -598,10 +602,18 @@
 
   .usernames__product-card {
     border-radius: 12px;
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    max-height: 450px;
+    display: flex;
+    flex-direction: column;
   }
   
   .usernames__product-header {
     min-height: 220px;
+    max-height: 220px;
+    flex-shrink: 0;
   }
   
   .usernames__product-content {
@@ -732,14 +744,23 @@
   .usernames__products {
     grid-template-columns: 1fr;
     gap: 1.2rem;
+    justify-items: center;
   }
 
   .usernames__product-card {
     border-radius: 15px;
+    width: 100%;
+    height: auto;
+    min-height: 350px;
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
   }
   
   .usernames__product-header {
     min-height: 120px;
+    max-height: 120px;
+    flex-shrink: 0;
   }
   
   .usernames__product-content {
@@ -881,5 +902,86 @@
   .usernames__quote-close {
     bottom: -15px;
     left: 8px;
+  }
+}
+
+/* View All Buttons */
+.usernames__view-all {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.usernames__view-all-btn {
+  background: #F7EC06;
+  color: #1F1F2C;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-align: center;
+  min-width: 150px;
+}
+
+.usernames__view-all-btn:hover {
+  background: #e6d405;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(247, 236, 6, 0.3);
+  color: #1F1F2C;
+}
+
+/* Responsive View All Buttons */
+@media (max-width: 768px) {
+  .usernames__view-all {
+    margin: 2rem 0;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .usernames__view-all-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    min-width: 120px;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .usernames__view-all-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 360px) {
+  .usernames__product-card {
+    width: 100%;
+    max-width: 300px;
+    min-height: 320px;
+    max-height: 380px;
+  }
+  
+  .usernames__product-header {
+    min-height: 100px;
+    max-height: 100px;
+  }
+  
+  .usernames__product-content {
+    padding: 1rem;
+  }
+  
+  .usernames__product-title {
+    font-size: 0.9rem;
+  }
+  
+  .usernames__product-price {
+    font-size: 1.1rem;
   }
 }

@@ -1,22 +1,22 @@
-/* Username4Char Styles */
-.username-4char {
+/* SocialViewAll Styles */
+.social-view-all {
   min-height: 100vh;
   background: #1F1F2C;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.username-4char__container {
+.social-view-all__container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 /* Main Content */
-.username-4char__main {
+.social-view-all__main {
   padding: 2rem 0;
 }
 
-.username-4char__sub-nav {
+.social-view-all__sub-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,11 +25,11 @@
   border-bottom: 1px solid #e0e0e0;
 }
 
-.username-4char__dropdown-container {
+.social-view-all__dropdown-container {
   position: relative;
 }
 
-.username-4char__sort-btn {
+.social-view-all__sort-btn {
   background: none;
   border: none;
   color: #666666;
@@ -44,17 +44,17 @@
   font-size: 1rem;
 }
 
-.username-4char__sort-btn:hover {
+.social-view-all__sort-btn:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
 }
 
-.username-4char__dropdown-arrow {
+.social-view-all__dropdown-arrow {
   font-size: 0.8rem;
   transition: transform 0.3s ease;
 }
 
-.username-4char__dropdown-menu {
+.social-view-all__dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -67,7 +67,7 @@
   overflow: hidden;
 }
 
-.username-4char__dropdown-item {
+.social-view-all__dropdown-item {
   display: block;
   width: 100%;
   padding: 0.75rem 1rem;
@@ -80,28 +80,28 @@
   font-size: 0.9rem;
 }
 
-.username-4char__dropdown-item:hover {
+.social-view-all__dropdown-item:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.username-4char__counter {
+.social-view-all__counter {
   color: #666666;
   font-size: 0.9rem;
 }
 
-.username-4char__counter-text {
+.social-view-all__counter-text {
   font-weight: 500;
 }
 
 /* Products Grid */
-.username-4char__products {
+.social-view-all__products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
 }
 
-.username-4char__product-card {
+.social-view-all__product-card {
   background: #2a2a3a;
   border-radius: 12px;
   overflow: hidden;
@@ -111,40 +111,40 @@
   contain: layout style paint;
 }
 
-.username-4char__product-card:hover {
+.social-view-all__product-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   border-color: #F7EC06;
 }
 
-.username-4char__product-header {
+.social-view-all__product-header {
   position: relative;
   height: 200px;
   overflow: hidden;
 }
 
-.username-4char__product-header-image {
+.social-view-all__product-header-image {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-.username-4char__product-header-image img {
+.social-view-all__product-header-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.username-4char__product-card:hover .username-4char__product-header-image img {
+.social-view-all__product-card:hover .social-view-all__product-header-image img {
   transform: scale(1.05);
 }
 
-.username-4char__product-content {
+.social-view-all__product-content {
   padding: 1.5rem;
 }
 
-.username-4char__product-title {
+.social-view-all__product-title {
   font-size: 1.1rem;
   font-weight: 600;
   color: #ffffff;
@@ -153,7 +153,7 @@
   text-align: right;
 }
 
-.username-4char__product-price {
+.social-view-all__product-price {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -163,13 +163,13 @@
   font-weight: 700;
 }
 
-.username-4char__product-actions {
+.social-view-all__product-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.username-4char__favorite-btn {
+.social-view-all__favorite-btn {
   background: none;
   border: 1px solid #e0e0e0;
   color: #666666;
@@ -184,13 +184,13 @@
   font-size: 1.2rem;
 }
 
-.username-4char__favorite-btn:hover {
+.social-view-all__favorite-btn:hover {
   color: #ff4757;
   border-color: #ff4757;
   background: rgba(255, 71, 87, 0.1);
 }
 
-.username-4char__add-to-cart {
+.social-view-all__add-to-cart {
   flex: 1;
   background: #F7EC06;
   color: #1F1F2C;
@@ -207,36 +207,36 @@
   font-size: 0.9rem;
 }
 
-.username-4char__add-to-cart:hover {
+.social-view-all__add-to-cart:hover {
   background: #e6d405;
   transform: translateY(-1px);
 }
 
 /* Reviews Section */
-.username-4char__reviews {
+.social-view-all__reviews {
   margin-top: 4rem;
   padding-top: 2rem;
   border-top: 1px solid #3a3a4a;
 }
 
-.username-4char__reviews-header {
+.social-view-all__reviews-header {
   margin-bottom: 2rem;
 }
 
-.username-4char__reviews-title {
+.social-view-all__reviews-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
   text-align: center;
 }
 
-.username-4char__reviews-container {
+.social-view-all__reviews-container {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.username-4char__slider-btn {
+.social-view-all__slider-btn {
   background: #2a2a3a;
   border: 1px solid #3a3a4a;
   color: #ffffff;
@@ -252,29 +252,29 @@
   font-weight: bold;
 }
 
-.username-4char__slider-btn:hover {
+.social-view-all__slider-btn:hover {
   background: #F7EC06;
   color: #1F1F2C;
   border-color: #F7EC06;
 }
 
-.username-4char__reviews-slider {
+.social-view-all__reviews-slider {
   flex: 1;
   overflow: hidden;
 }
 
-.username-4char__reviews-track {
+.social-view-all__reviews-track {
   transition: transform 0.3s ease;
   will-change: transform;
 }
 
-.username-4char__reviews-grid {
+.social-view-all__reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
-.username-4char__review-card {
+.social-view-all__review-card {
   background: #2a2a3a;
   border: 1px solid #3a3a4a;
   border-radius: 12px;
@@ -285,48 +285,48 @@
   contain: layout style paint;
 }
 
-.username-4char__review-card:hover {
+.social-view-all__review-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   border-color: #F7EC06;
 }
 
-.username-4char__review-card.active {
+.social-view-all__review-card.active {
   border-color: #F7EC06;
   background: rgba(247, 236, 6, 0.05);
 }
 
-.username-4char__review-rating {
+.social-view-all__review-rating {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-.username-4char__star {
+.social-view-all__star {
   color: #666666;
   font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
-.username-4char__star.filled {
+.social-view-all__star.filled {
   color: #F7EC06;
 }
 
-.username-4char__rating-number {
+.social-view-all__rating-number {
   color: #ffffff;
   font-weight: 600;
   margin-left: 0.5rem;
 }
 
-.username-4char__reviewer {
+.social-view-all__reviewer {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.username-4char__reviewer-avatar {
+.social-view-all__reviewer-avatar {
   width: 40px;
   height: 40px;
   background: #3a3a4a;
@@ -336,31 +336,31 @@
   justify-content: center;
 }
 
-.username-4char__avatar-icon {
+.social-view-all__avatar-icon {
   font-size: 1.2rem;
 }
 
-.username-4char__reviewer-info {
+.social-view-all__reviewer-info {
   flex: 1;
 }
 
-.username-4char__reviewer-name {
+.social-view-all__reviewer-name {
   color: #ffffff;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
-.username-4char__reviewer-date {
+.social-view-all__reviewer-date {
   color: #666666;
   font-size: 0.8rem;
 }
 
-.username-4char__review-content {
+.social-view-all__review-content {
   position: relative;
 }
 
-.username-4char__quote-open,
-.username-4char__quote-close {
+.social-view-all__quote-open,
+.social-view-all__quote-close {
   position: absolute;
   font-size: 2rem;
   color: #F7EC06;
@@ -368,17 +368,17 @@
   opacity: 0.3;
 }
 
-.username-4char__quote-open {
+.social-view-all__quote-open {
   top: -0.5rem;
   right: -0.5rem;
 }
 
-.username-4char__quote-close {
+.social-view-all__quote-close {
   bottom: -0.5rem;
   left: -0.5rem;
 }
 
-.username-4char__review-text {
+.social-view-all__review-text {
   color: #ffffff;
   line-height: 1.6;
   font-size: 0.9rem;
@@ -387,77 +387,77 @@
 
 /* Responsive Design */
 @media (max-width: 992px) {
-  .username-4char__container {
+  .social-view-all__container {
     padding: 0 1.5rem;
   }
   
-  .username-4char__products {
+  .social-view-all__products {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
   }
   
-  .username-4char__reviews-grid {
+  .social-view-all__reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .username-4char__container {
+  .social-view-all__container {
     padding: 0 1rem;
   }
   
-  .username-4char__main {
+  .social-view-all__main {
     padding: 1.5rem 0;
   }
   
-  .username-4char__sub-nav {
+  .social-view-all__sub-nav {
     flex-direction: column;
     gap: 1rem;
     align-items: flex-start;
   }
   
-  .username-4char__products {
+  .social-view-all__products {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
   
-  .username-4char__product-card {
+  .social-view-all__product-card {
     margin: 0 auto;
     max-width: 400px;
   }
   
-  .username-4char__reviews-container {
+  .social-view-all__reviews-container {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .username-4char__container {
+  .social-view-all__container {
     padding: 0 0.75rem;
   }
   
-  .username-4char__main {
+  .social-view-all__main {
     padding: 1rem 0;
   }
   
-  .username-4char__product-content {
+  .social-view-all__product-content {
     padding: 1rem;
   }
   
-  .username-4char__product-title {
+  .social-view-all__product-title {
     font-size: 1rem;
   }
   
-  .username-4char__product-price {
+  .social-view-all__product-price {
     font-size: 1.1rem;
   }
   
-  .username-4char__add-to-cart {
+  .social-view-all__add-to-cart {
     padding: 0.6rem 0.8rem;
     font-size: 0.8rem;
   }
   
-  .username-4char__favorite-btn {
+  .social-view-all__favorite-btn {
     width: 35px;
     height: 35px;
     font-size: 1rem;
@@ -465,19 +465,19 @@
 }
 
 @media (max-width: 360px) {
-  .username-4char__container {
+  .social-view-all__container {
     padding: 0 0.5rem;
   }
   
-  .username-4char__product-content {
+  .social-view-all__product-content {
     padding: 0.75rem;
   }
   
-  .username-4char__product-title {
+  .social-view-all__product-title {
     font-size: 0.9rem;
   }
   
-  .username-4char__product-price {
+  .social-view-all__product-price {
     font-size: 1rem;
   }
 }

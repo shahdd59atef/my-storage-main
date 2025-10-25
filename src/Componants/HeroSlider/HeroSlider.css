@@ -147,10 +147,18 @@
 /* Responsive Design */
 @media (max-width: 992px) {
   .hero-slider {
-    border-radius: 0px;
+    border-radius: 20px;
     height: auto;
     min-height: 300px;
-    padding-top: 0px;
+    padding-top: 20px;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-slider__viewport {
+    height: fit-content;
+    overflow: hidden;
   }
 
   .hero-slider__btn {
@@ -177,17 +185,30 @@
     width: 9px;
     height: 9px;
   }
+
+  .hero-slider__track {
+    border-radius: 20px;
+    overflow: hidden;
+    height: fit-content;
+  }
 }
 
 @media (max-width: 768px) {
   .hero-slider {
-    border-radius: 0px;
+    border-radius: 20px;
     height: auto;
     min-height: auto;
-    padding-top: 0px;
+    padding-top: 20px;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 0;
     aspect-ratio: 16/9;
+    max-width: 100%;
+  }
+
+  .hero-slider__viewport {
+    height: fit-content;
+    overflow: hidden;
   }
 
   .hero-slider__btn {
@@ -218,9 +239,11 @@
 
   /* Show full image on small screens */
   .hero-slider__track {
-    height: auto;
+    height: fit-content;
     min-height: auto;
     aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
   }
   .hero-slider__img {
     height: auto;
@@ -231,19 +254,28 @@
 
 @media (max-width: 480px) {
   .hero-slider {
-    border-radius: 0px;
+    border-radius: 20px;
     height: auto;
     min-height: auto;
-    padding-top: 0px;
+    padding-top: 20px;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 0;
     aspect-ratio: 16/9;
+    max-width: 100%;
+  }
+
+  .hero-slider__viewport {
+    height: fit-content;
+    overflow: hidden;
   }
 
   .hero-slider__track {
-    height: auto;
+    height: fit-content;
     min-height: auto;
     aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   .hero-slider__img {
@@ -289,16 +321,26 @@
 
 @media (max-width: 360px) {
   .hero-slider {
-    border-radius: 0px;
+    border-radius: 20px;
     height: auto;
     min-height: 200px;
-    padding-top: 0px;
+    padding-top: 20px;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-slider__viewport {
+    height: fit-content;
+    overflow: hidden;
   }
 
   .hero-slider__track {
-    height: 100%;
+    height: fit-content;
     min-height: auto;
     aspect-ratio: 16/9;
+    border-radius: 20px;
+    overflow: hidden;
   }
 
   .hero-slider__img {

@@ -45,11 +45,11 @@ const ServicesSlider = memo(function ServicesSlider() {
 
   // Move one card at a time for smooth scrolling like Facebook
   const next = useCallback(() => {
-    setIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1));
+    setIndex((prevIndex) => (prevIndex >= maxIndex ? prevIndex : prevIndex + 1));
   }, [maxIndex]);
 
   const prev = useCallback(() => {
-    setIndex((prevIndex) => (prevIndex <= 0 ? maxIndex : prevIndex - 1));
+    setIndex((prevIndex) => (prevIndex <= 0 ? prevIndex : prevIndex - 1));
   }, [maxIndex]);
 
   const goTo = useCallback((i) => {
@@ -90,7 +90,7 @@ const ServicesSlider = memo(function ServicesSlider() {
 
         <div className="services__slider">
           <div className="services__viewport">
-            <div className="services__track" style={{ transform: `translateX(${index * cardWidth}px)` }}>
+            <div className="services__track" style={{ transform: `translateX(calc(-50% - ${index * cardWidth}px))` }}>
               {items.map((it) => (
                 <a key={it.id} href={it.link} className="services__item">
                   <div className="services__card">
@@ -103,19 +103,31 @@ const ServicesSlider = memo(function ServicesSlider() {
           </div>
         </div>
 
-        <div className="services__controls">
-          <button className="services__arrow" onClick={prev} aria-label="السابق">
-            <HiArrowSmallRight />
-          </button>
-          <div className="services__dots">
-            {Array.from({ length: totalPages }).map((_, i) => (
-              <button key={i} className={`services__dot ${i===currentPage? 'is-active':''}`} onClick={() => goTo(i)} aria-label={`صفحة ${i+1}`} />
-            ))}
+        {totalPages > 1 && (
+          <div className="services__controls">
+            <button 
+              className={`services__arrow ${index === 0 ? 'services__arrow--disabled' : ''}`} 
+              onClick={prev} 
+              aria-label="السابق"
+              disabled={index === 0}
+            >
+              <HiArrowSmallRight />
+            </button>
+            <div className="services__dots">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button key={i} className={`services__dot ${i===currentPage? 'is-active':''}`} onClick={() => goTo(i)} aria-label={`صفحة ${i+1}`} />
+              ))}
+            </div>
+            <button 
+              className={`services__arrow ${index >= maxIndex ? 'services__arrow--disabled' : ''}`} 
+              onClick={next} 
+              aria-label="التالي"
+              disabled={index >= maxIndex}
+            >
+              <HiArrowSmallLeft />
+            </button>
           </div>
-          <button className="services__arrow" onClick={next} aria-label="التالي">
-            <HiArrowSmallLeft />
-          </button>
-        </div>
+        )}
       </div>
     </section>
   );

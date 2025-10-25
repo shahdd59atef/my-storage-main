@@ -3,10 +3,10 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
-import './Username4Char.css';
+import './SocialViewAll.css';
 import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
-const Username4Char = memo(() => {
+const SocialViewAll = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
@@ -25,51 +25,45 @@ const Username4Char = memo(() => {
   const products = [
     {
       id: 1,
-      title: 'يوزر رباعي سناب شات 1000 مشاهدة',
-      price: '200',
+      title: 'خدمة سناب شات 1000 مشاهدة',
+      price: '180',
       range: '1000 مشاهدة',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     },
     {
       id: 2,
-      title: 'يوزر رباعي انستقرام 500 متابع',
-      price: '170',
+      title: 'خدمة انستقرام 500 متابع',
+      price: '150',
       range: '500 متابع',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     },
     {
       id: 3,
-      title: 'يوزر رباعي تيك توك 2000 مشاهدة',
-      price: '140',
+      title: 'خدمة تيك توك 2000 مشاهدة',
+      price: '120',
       range: '2000 مشاهدة',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     },
     {
       id: 4,
-      title: 'يوزر رباعي تويتر 1000 متابع',
-      price: '110',
+      title: 'خدمة تويتر 1000 متابع',
+      price: '90',
       range: '1000 متابع',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     },
     {
       id: 5,
-      title: 'يوزر رباعي فيسبوك 500 إعجاب',
-      price: '100',
+      title: 'خدمة فيسبوك 500 إعجاب',
+      price: '80',
       range: '500 إعجاب',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     },
     {
       id: 6,
-      title: 'يوزر رباعي يوتيوب 1000 مشاهدة',
-      price: '220',
+      title: 'خدمة يوتيوب 1000 مشاهدة',
+      price: '200',
       range: '1000 مشاهدة',
-      badge: '5★',
-      image: 'https://cdn.salla.sa/DQYwE/vknfwxMv9gXEyMCt5M6hCQOZIxj59EOlvKq8f2Gl.jpg'
+      badge: '5★'
     }
   ];
 
@@ -127,26 +121,26 @@ const Username4Char = memo(() => {
   };
 
   return (
-    <main className="username-4char">
-      <div className="username-4char__container">
-        <div className="username-4char__main">
+    <main className="social-view-all">
+      <div className="social-view-all__container">
+        <div className="social-view-all__main">
           {/* Sub Navigation */}
-          <div className="username-4char__sub-nav">
-            <div className="username-4char__dropdown-container">
+          <div className="social-view-all__sub-nav">
+            <div className="social-view-all__dropdown-container">
               <button 
-                className="username-4char__sort-btn"
+                className="social-view-all__sort-btn"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {selectedSort}
-                <span className="username-4char__dropdown-arrow">▼</span>
+                <span className="social-view-all__dropdown-arrow">▼</span>
               </button>
               
               {isDropdownOpen && (
-                <div className="username-4char__dropdown-menu">
+                <div className="social-view-all__dropdown-menu">
                   {sortOptions.map((option, index) => (
                     <button
                       key={index}
-                      className="username-4char__dropdown-item"
+                      className="social-view-all__dropdown-item"
                       onClick={() => handleSortSelect(option)}
                     >
                       {option}
@@ -156,36 +150,36 @@ const Username4Char = memo(() => {
               )}
             </div>
             
-            <div className="username-4char__counter">
-              <span className="username-4char__counter-text">{getProductCountText()}</span>
+            <div className="social-view-all__counter">
+              <span className="social-view-all__counter-text">{getProductCountText()}</span>
             </div>
           </div>
 
           {/* Products Grid */}
-          <div className="username-4char__products">
+          <div className="social-view-all__products">
             {products.map((product) => (
-              <div key={product.id} className="username-4char__product-card">
-                <div className="username-4char__product-header">
-                  <div className="username-4char__product-header-image">
+              <div key={product.id} className="social-view-all__product-card">
+                <div className="social-view-all__product-header">
+                  <div className="social-view-all__product-header-image">
                     <img 
-                      src={product.image} 
+                      src="https://cdn.salla.sa/form-builder/service-1.png" 
                       alt={product.title}
                     />
                   </div>
                 </div>
                 
-                <div className="username-4char__product-content">
-                  <h3 className="username-4char__product-title">{product.title}</h3>
-                  <div className="username-4char__product-price">
+                <div className="social-view-all__product-content">
+                  <h3 className="social-view-all__product-title">{product.title}</h3>
+                  <div className="social-view-all__product-price">
                     <SaudiRiyalIcon />
                     <span>{product.price}</span>
                   </div>
                   
-                  <div className="username-4char__product-actions">
-                    <button className="username-4char__favorite-btn">
+                  <div className="social-view-all__product-actions">
+                    <button className="social-view-all__favorite-btn">
                       <IoIosHeartEmpty />
                     </button>
-                    <button className="username-4char__add-to-cart">
+                    <button className="social-view-all__add-to-cart">
                       <PiShoppingBag />
                       <span>أضف للسلة</span>
                     </button>
@@ -203,4 +197,4 @@ const Username4Char = memo(() => {
   );
 });
 
-export default Username4Char;
+export default SocialViewAll;

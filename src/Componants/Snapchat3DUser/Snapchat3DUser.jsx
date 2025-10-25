@@ -3,10 +3,10 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
-import './SnapchatAccounts.css';
+import './Snapchat3DUser.css';
 import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
-const SnapchatAccounts = memo(() => {
+const Snapchat3DUser = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
@@ -25,31 +25,55 @@ const SnapchatAccounts = memo(() => {
   const products = [
     {
       id: 1,
-      title: 'حساب سناب شات 500 الف نقطة',
-      price: '500',
-      range: '500 الف نقطة',
+      title: 'يوزر ثلاثي سناب شات 1000 مشاهدة',
+      price: '200',
+      range: '1000 مشاهدة',
       badge: '5★'
     },
     {
       id: 2,
-      title: 'حساب سناب شات 200 الف نقطة',
-      price: '200',
-      range: '200 الف نقطة',
+      title: 'يوزر ثلاثي سناب شات 500 مشاهدة',
+      price: '120',
+      range: '500 مشاهدة',
       badge: '5★'
     },
     {
       id: 3,
-      title: 'حساب سناب شات 100 الف نقطة',
-      price: '140',
-      range: '100 الف نقطة',
+      title: 'يوزر ثلاثي سناب شات 200 مشاهدة',
+      price: '60',
+      range: '200 مشاهدة',
       badge: '5★'
     },
     {
       id: 4,
-      title: 'حساب سناب شات 50 الف نقطة',
-      price: '90',
-      range: '50 الف نقطة',
+      title: 'يوزر ثلاثي سناب شات 100 مشاهدة',
+      price: '35',
+      range: '100 مشاهدة',
       badge: '5★'
+    }
+  ];
+
+  const reviews = [
+    {
+      id: 1,
+      text: "خدمة اليوزر الثلاثي ممتازة ونتائج مذهلة",
+      name: "أحمد العتيبي",
+      date: "03/15/2024",
+      rating: 5
+    },
+    {
+      id: 2,
+      text: "أفضل خدمة لليوزر الثلاثي على سناب شات",
+      name: "فاطمة الشمري",
+      date: "03/10/2024",
+      rating: 5
+    },
+    {
+      id: 3,
+      text: "نتائج رائعة وخدمة سريعة",
+      name: "خالد القحطاني",
+      date: "03/05/2024",
+      rating: 5
     }
   ];
 
@@ -63,30 +87,6 @@ const SnapchatAccounts = memo(() => {
     
     return `${num} منتج`;
   };
-
-  const reviews = [
-    {
-      id: 1,
-      text: "حسابات موثوقة وجودة عالية",
-      name: "عمر الشهري",
-      date: "02/10/2024",
-      rating: 5
-    },
-    {
-      id: 2,
-      text: "خدمة ممتازة وتسليم سريع",
-      name: "ريم العنزي",
-      date: "01/28/2024",
-      rating: 5
-    },
-    {
-      id: 3,
-      text: "أفضل موقع لشراء حسابات سناب شات",
-      name: "سعود القحطاني",
-      date: "01/15/2024",
-      rating: 5
-    }
-  ];
 
   // Slider navigation functions
   const nextReview = () => {
@@ -117,28 +117,28 @@ const SnapchatAccounts = memo(() => {
   };
 
   return (
-    <div className="snapchat-accounts">
+    <div className="snapchat-3d-user">
       {/* Main Content */}
-      <main className="snapchat-accounts__main">
-        <div className="snapchat-accounts__container">
-          <div className="snapchat-accounts__sub-nav">
-            <div className="snapchat-accounts__dropdown-container">
+      <main className="snapchat-3d-user__main">
+        <div className="snapchat-3d-user__container">
+          <div className="snapchat-3d-user__sub-nav">
+            <div className="snapchat-3d-user__dropdown-container">
               <button 
-                className="snapchat-accounts__sort-btn"
+                className="snapchat-3d-user__sort-btn"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {selectedSort}
-                <span className="snapchat-accounts__dropdown-arrow">
+                <span className="snapchat-3d-user__dropdown-arrow">
                   {isDropdownOpen ? '▲' : '▼'}
                 </span>
               </button>
               
               {isDropdownOpen && (
-                <div className="snapchat-accounts__dropdown-menu">
+                <div className="snapchat-3d-user__dropdown-menu">
                   {sortOptions.map((option, index) => (
                     <button 
                       key={index}
-                      className={`snapchat-accounts__dropdown-item ${option === selectedSort ? 'selected' : ''}`}
+                      className={`snapchat-3d-user__dropdown-item ${option === selectedSort ? 'selected' : ''}`}
                       onClick={() => handleSortSelect(option)}
                     >
                       {option}
@@ -148,33 +148,33 @@ const SnapchatAccounts = memo(() => {
               )}
             </div>
             
-            <div className="snapchat-accounts__counter">
-              <span className="snapchat-accounts__counter-text">
+            <div className="snapchat-3d-user__counter">
+              <span className="snapchat-3d-user__counter-text">
                 عرض {getProductCountText(products.length)}
               </span>
             </div>
           </div>
           
-          <div className="snapchat-accounts__products">
+          <div className="snapchat-3d-user__products">
             {products.map((product) => (
-              <div key={product.id} className="snapchat-accounts__product-card">
-                <div className="snapchat-accounts__product-header">
+              <div key={product.id} className="snapchat-3d-user__product-card">
+                <div className="snapchat-3d-user__product-header">
                   <img
                     src="https://cdn.salla.sa/DQYwE/M5rnE6RQieGwxLbKyl4EpAHD9Y3OkeObgnKbtYTB.jpg"
                     alt="خدمة"
-                    className="snapchat-accounts__product-header-image"
+                    className="snapchat-3d-user__product-header-image"
                   />
                 </div>
-                <div className="snapchat-accounts__product-content">
-                  <h4 className="snapchat-accounts__product-title">{product.title}</h4>
-                  <p className="snapchat-accounts__product-price" dir="rtl">
+                <div className="snapchat-3d-user__product-content">
+                  <h4 className="snapchat-3d-user__product-title">{product.title}</h4>
+                  <p className="snapchat-3d-user__product-price" dir="rtl">
                     {product.price} <SaudiRiyalIcon width={12} height={13} />
                   </p>
-                  <div className="snapchat-accounts__product-actions">
-                    <button className="snapchat-accounts__favorite-btn">
+                  <div className="snapchat-3d-user__product-actions">
+                    <button className="snapchat-3d-user__favorite-btn">
                       <IoIosHeartEmpty />
                     </button>
-                    <button className="snapchat-accounts__add-to-cart">
+                    <button className="snapchat-3d-user__add-to-cart">
                       <PiShoppingBag />
                       إضافة للسلة
                     </button>
@@ -193,16 +193,6 @@ const SnapchatAccounts = memo(() => {
   );
 });
 
-SnapchatAccounts.displayName = 'SnapchatAccounts';
+Snapchat3DUser.displayName = 'Snapchat3DUser';
 
-export default SnapchatAccounts;
-
-
-
-
-
-
-
-
-
-
+export default Snapchat3DUser;

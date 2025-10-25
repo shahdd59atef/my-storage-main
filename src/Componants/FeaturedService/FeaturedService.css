@@ -365,11 +365,26 @@
 
 @media (max-width: 768px) {
   .featured-service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
     padding: 2rem 0;
+    box-sizing: border-box;
   }
   
   .featured-service__container {
     padding: 0 1rem;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .featured-service__left {

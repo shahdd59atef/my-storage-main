@@ -3,10 +3,10 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
-import './SnapchatAccounts.css';
+import './ViewAll.css';
 import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
-const SnapchatAccounts = memo(() => {
+const ViewAll = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [selectedSort, setSelectedSort] = useState('ترتيب مقترحاتنا');
@@ -25,31 +25,69 @@ const SnapchatAccounts = memo(() => {
   const products = [
     {
       id: 1,
-      title: 'حساب سناب شات 500 الف نقطة',
-      price: '500',
-      range: '500 الف نقطة',
+      title: 'خدمة سناب شات 1000 مشاهدة',
+      price: '180',
+      range: '1000 مشاهدة',
       badge: '5★'
     },
     {
       id: 2,
-      title: 'حساب سناب شات 200 الف نقطة',
-      price: '200',
-      range: '200 الف نقطة',
+      title: 'خدمة سناب شات 500 مشاهدة',
+      price: '100',
+      range: '500 مشاهدة',
       badge: '5★'
     },
     {
       id: 3,
-      title: 'حساب سناب شات 100 الف نقطة',
-      price: '140',
-      range: '100 الف نقطة',
+      title: 'خدمة سناب شات 200 مشاهدة',
+      price: '50',
+      range: '200 مشاهدة',
       badge: '5★'
     },
     {
       id: 4,
-      title: 'حساب سناب شات 50 الف نقطة',
-      price: '90',
-      range: '50 الف نقطة',
+      title: 'خدمة سناب شات 100 مشاهدة',
+      price: '30',
+      range: '100 مشاهدة',
       badge: '5★'
+    },
+    {
+      id: 5,
+      title: 'خدمة سناب شات 50 مشاهدة',
+      price: '20',
+      range: '50 مشاهدة',
+      badge: '5★'
+    },
+    {
+      id: 6,
+      title: 'خدمة سناب شات 25 مشاهدة',
+      price: '15',
+      range: '25 مشاهدة',
+      badge: '5★'
+    }
+  ];
+
+  const reviews = [
+    {
+      id: 1,
+      text: "خدمة ممتازة ونتائج مذهلة",
+      name: "فهد العتيبي",
+      date: "03/25/2024",
+      rating: 5
+    },
+    {
+      id: 2,
+      text: "أفضل خدمة لسناب شات",
+      name: "نورا الشمري",
+      date: "03/22/2024",
+      rating: 5
+    },
+    {
+      id: 3,
+      text: "نتائج رائعة وخدمة سريعة",
+      name: "خالد القحطاني",
+      date: "03/18/2024",
+      rating: 5
     }
   ];
 
@@ -63,30 +101,6 @@ const SnapchatAccounts = memo(() => {
     
     return `${num} منتج`;
   };
-
-  const reviews = [
-    {
-      id: 1,
-      text: "حسابات موثوقة وجودة عالية",
-      name: "عمر الشهري",
-      date: "02/10/2024",
-      rating: 5
-    },
-    {
-      id: 2,
-      text: "خدمة ممتازة وتسليم سريع",
-      name: "ريم العنزي",
-      date: "01/28/2024",
-      rating: 5
-    },
-    {
-      id: 3,
-      text: "أفضل موقع لشراء حسابات سناب شات",
-      name: "سعود القحطاني",
-      date: "01/15/2024",
-      rating: 5
-    }
-  ];
 
   // Slider navigation functions
   const nextReview = () => {
@@ -117,28 +131,28 @@ const SnapchatAccounts = memo(() => {
   };
 
   return (
-    <div className="snapchat-accounts">
+    <div className="view-all">
       {/* Main Content */}
-      <main className="snapchat-accounts__main">
-        <div className="snapchat-accounts__container">
-          <div className="snapchat-accounts__sub-nav">
-            <div className="snapchat-accounts__dropdown-container">
+      <main className="view-all__main">
+        <div className="view-all__container">
+          <div className="view-all__sub-nav">
+            <div className="view-all__dropdown-container">
               <button 
-                className="snapchat-accounts__sort-btn"
+                className="view-all__sort-btn"
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               >
                 {selectedSort}
-                <span className="snapchat-accounts__dropdown-arrow">
+                <span className="view-all__dropdown-arrow">
                   {isDropdownOpen ? '▲' : '▼'}
                 </span>
               </button>
               
               {isDropdownOpen && (
-                <div className="snapchat-accounts__dropdown-menu">
+                <div className="view-all__dropdown-menu">
                   {sortOptions.map((option, index) => (
                     <button 
                       key={index}
-                      className={`snapchat-accounts__dropdown-item ${option === selectedSort ? 'selected' : ''}`}
+                      className={`view-all__dropdown-item ${option === selectedSort ? 'selected' : ''}`}
                       onClick={() => handleSortSelect(option)}
                     >
                       {option}
@@ -148,33 +162,33 @@ const SnapchatAccounts = memo(() => {
               )}
             </div>
             
-            <div className="snapchat-accounts__counter">
-              <span className="snapchat-accounts__counter-text">
+            <div className="view-all__counter">
+              <span className="view-all__counter-text">
                 عرض {getProductCountText(products.length)}
               </span>
             </div>
           </div>
           
-          <div className="snapchat-accounts__products">
+          <div className="view-all__products">
             {products.map((product) => (
-              <div key={product.id} className="snapchat-accounts__product-card">
-                <div className="snapchat-accounts__product-header">
+              <div key={product.id} className="view-all__product-card">
+                <div className="view-all__product-header">
                   <img
                     src="https://cdn.salla.sa/DQYwE/M5rnE6RQieGwxLbKyl4EpAHD9Y3OkeObgnKbtYTB.jpg"
                     alt="خدمة"
-                    className="snapchat-accounts__product-header-image"
+                    className="view-all__product-header-image"
                   />
                 </div>
-                <div className="snapchat-accounts__product-content">
-                  <h4 className="snapchat-accounts__product-title">{product.title}</h4>
-                  <p className="snapchat-accounts__product-price" dir="rtl">
+                <div className="view-all__product-content">
+                  <h4 className="view-all__product-title">{product.title}</h4>
+                  <p className="view-all__product-price" dir="rtl">
                     {product.price} <SaudiRiyalIcon width={12} height={13} />
                   </p>
-                  <div className="snapchat-accounts__product-actions">
-                    <button className="snapchat-accounts__favorite-btn">
+                  <div className="view-all__product-actions">
+                    <button className="view-all__favorite-btn">
                       <IoIosHeartEmpty />
                     </button>
-                    <button className="snapchat-accounts__add-to-cart">
+                    <button className="view-all__add-to-cart">
                       <PiShoppingBag />
                       إضافة للسلة
                     </button>
@@ -193,16 +207,6 @@ const SnapchatAccounts = memo(() => {
   );
 });
 
-SnapchatAccounts.displayName = 'SnapchatAccounts';
+ViewAll.displayName = 'ViewAll';
 
-export default SnapchatAccounts;
-
-
-
-
-
-
-
-
-
-
+export default ViewAll;

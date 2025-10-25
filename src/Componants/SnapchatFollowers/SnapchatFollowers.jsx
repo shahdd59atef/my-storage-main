@@ -4,7 +4,7 @@ import { PiShoppingBag } from "react-icons/pi";
 import { CiStar } from "react-icons/ci";
 import SaudiRiyalIcon from '../SaudiRiyalIcon/SaudiRiyalIcon';
 import './SnapchatFollowers.css';
-import ReviewsSlider from '../ReviewsSlider/ReviewsSlider';
+import UnifiedReviews from '../UnifiedReviews/UnifiedReviews';
 
 const SnapchatFollowers = memo(() => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -77,17 +77,17 @@ const SnapchatFollowers = memo(() => {
     }
   ];
 
-  const nextReview = () => {
+  const nextReview = useCallback(() => {
     setCurrentReviewIndex((prev) => (prev + 1) % reviews.length);
-  };
+  }, [reviews.length]);
 
-  const prevReview = () => {
+  const prevReview = useCallback(() => {
     setCurrentReviewIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
-  };
+  }, [reviews.length]);
 
-  const goToReview = (index) => {
+  const goToReview = useCallback((index) => {
     setCurrentReviewIndex(index);
-  };
+  }, []);
 
   const sortOptions = [
     'ترتيب مقترحاتنا',
@@ -176,62 +176,7 @@ const SnapchatFollowers = memo(() => {
           {/* dots navigation removed as requested */}
           
           {/* Customer Reviews Section */}
-          {isMobile ? (
-            <ReviewsSlider />
-          ) : (
-            <section className="snapchat-followers__reviews">
-              <div className="snapchat-followers__reviews-header">
-                <h3 className="snapchat-followers__reviews-title">آراء العملاء</h3>
-              </div>
-              <div className="snapchat-followers__reviews-container">
-                <button 
-                  className="snapchat-followers__slider-btn snapchat-followers__slider-btn--prev"
-                  onClick={prevReview}
-                  aria-label="السابق"
-                >
-                  ‹
-                </button>
-                <button 
-                  className="snapchat-followers__slider-btn snapchat-followers__slider-btn--next"
-                  onClick={nextReview}
-                  aria-label="التالي"
-                >
-                  ›
-                </button>
-                <div className="snapchat-followers__reviews-slider">
-                  <div 
-                    className="snapchat-followers__reviews-track"
-                    style={{ transform: `translateX(${currentReviewIndex * 100}%)` }}
-                  >
-                    <div className="snapchat-followers__reviews-grid">
-                      {reviews.map((review) => (
-                        <div key={review.id} className="snapchat-followers__review-card">
-                          <div className="snapchat-followers__review-rating">
-                            <span className="snapchat-followers__star"><CiStar /></span>
-                            <span className="snapchat-followers__rating-number">{review.rating}</span>
-                          </div>
-                          <div className="snapchat-followers__reviewer">
-                            <div className="snapchat-followers__reviewer-avatar">
-                              <div className="snapchat-followers__avatar-icon">👤</div>
-                            </div>
-                            <div className="snapchat-followers__reviewer-info">
-                              <h4 className="snapchat-followers__reviewer-name">{review.name}</h4>
-                              <span className="snapchat-followers__reviewer-date">{review.date}</span>
-                            </div>
-                          </div>
-                          <div className="snapchat-followers__review-content">
-                            <div className="snapchat-followers__quote-open">"</div>
-                            <p className="snapchat-followers__review-text">{review.text}</p>
-                            <div className="snapchat-followers__quote-close">"</div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-          )}
+          <UnifiedReviews />
         </div>
       </main>
     </div>
